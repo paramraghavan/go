@@ -9,8 +9,11 @@
   - Install go
   - go version
   - go
-    
+  - 
 - Go editor
   - Visual Studio Code + extension + libraries
   - https://code.visualstudio.com/docs/?dv=darwinarm64
   - Install extension Go for Visual Studio code from teh Go team at Google. In extension search for Go
+
+## Go tutorials on github
+  - https://github.com/topics/go-tutorial
