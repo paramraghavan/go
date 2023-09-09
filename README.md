@@ -88,6 +88,21 @@ c = a - b   // 5 - subtraction, here we are assiging new values to existing  var
 c = a * b   // 50 - multiplication
 ```
 
+## Comparison - value and reference types
+
+### value types
+```
+a, b : = 10, 5
+с := a == b  // false - equality
+c = a != b   // true - inequality
+```
+
+## Constants 
+```
+const a = 42  // constant (implicitly typed)
+const b string = "Hello" // expliocity typed constant
+```
+
 
 ## TYPE CONVERSION
 Go doesn't support implicit conversions.
