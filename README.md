@@ -101,7 +101,30 @@ c = a != b   // true - inequality
 ```
 const a = 42  // constant (implicitly typed)
 const b string = "Hello" // expliocity typed constant
+
+const c = a  // one constant assigned to another
+
+// group constant
+const (
+   d = true
+   e = 3.14
+)
 ```
+
+## Pointers and Values
+Pointers are primarily used to sahre memory.
+
+```
+a := 42
+b := &a
+fmt.print(*b) // prints 42, dereferencing pointer b
+fmt.print(b) // prints memeory address of a
+*b = 84 // changes the value held in address of a
+fmt.print(a) // prints 84
+
+c = new(int) // build-in "new" function creates  pointer to anonymous variable
+```
+
 
 
 ## TYPE CONVERSION
