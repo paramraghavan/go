@@ -77,6 +77,18 @@ var myName = "Mike"         // initialize with inferred type
 myName := "Mike"            // short declaration syntax
 ```
 
+- Go allows multiple variables to be initialized at once!
+```
+a, b := 10, 5 // here a and bis inferred as  in datatype, created and initialied with 10 and 5 respectively
+```
+
+```
+c := a + b  // 15 - addition, here c is inferred as  in datatype, created and initialied with 50
+c = a - b   // 5 - subtraction, here we are assiging new values to existing  variable c
+c = a * b   // 50 - multiplication
+```
+
+
 ## TYPE CONVERSION
 Go doesn't support implicit conversions.
 ```
