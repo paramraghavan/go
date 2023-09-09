@@ -2,6 +2,8 @@
 ## Go for Java developers
 - https://github.com/fstab/go-programming-for-java-developers
 
+# documentation on standard libraries
+- https://pkg.go.dev/std
 
 ## Setup
 - Intall Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
@@ -27,6 +29,44 @@
   - go mod download: downloads modules to your device’s cache.
   - and more **go mod help**
   - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.
+
+## Simple data types
+```
+Strings, Numbers, Booleans, Errors
+```
+
+### Strings
+```
+"this is a string: \n creates a new line" interpreted string
+'this is also a string: \n does not create a new line' raw string
+```
+
+### error type
+The error type in Go is implemented as the following interface:
+```
+type error interface {
+    Error() string
+}
+```
+So basically, an error is anything that implements the Error() method, which returns an error message as a string. It’s that simple!
+
+#### Constructing Errors
+Errors can be constructed on the fly using Go’s built-in errors or fmt packages. For example, the following function uses the errors package to return a new error with a static error message:
+```
+package main
+
+import "errors"
+
+func DoSomething() error {
+    return errors.New("something didn't work")
+}
+```
+- https://earthly.dev/blog/golang-errors/
+
+
+### more on data type
+- https://www.programiz.com/golang/data-types
+- https://www.w3schools.com/go/go_data_types.php
 
 ## Go tutorials on github
   - https://github.com/topics/go-tutorial
