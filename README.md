@@ -68,6 +68,24 @@ func DoSomething() error {
 - https://www.programiz.com/golang/data-types
 - https://www.w3schools.com/go/go_data_types.php
 
+
+## Variable Declaration
+```
+var myName string            //  declare variable
+var myName string = "Mike"   // declare and initialize
+var myName = "Mike"         // initialize with inferred type
+myName := "Mike"            // short declaration syntax
+```
+
+## TYPE CONVERSION
+Go doesn't support implicit conversions.
+```
+var i int = 32
+var f float32
+f= i  // error! - Go doesn't support implicit conversions
+f = float32(i)  //type conversions allow explicit conversion
+'''
+
 ## Go tutorials on github
   - https://github.com/topics/go-tutorial
   - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/ **
