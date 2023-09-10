@@ -41,11 +41,19 @@ In Go, a program starts with a single goroutine, which executes the main functio
 
 Goroutines are very lightweight, and it's possible to create thousands or even millions of them in a single program without significant overhead. This makes it easy to write concurrent programs in Go that take advantage of multiple CPU cores and can perform many tasks simultaneously.
 
-Because goroutines are managed by the Go runtime, they are automatically scheduled and can communicate with each other using channels. This makes it easy to write complex concurrent programs without worrying about low-level details such as locking and synchronization.
+Because goroutines are managed by the Go runtime, they are automatically scheduled and can **communicate with each other using channels**. This makes it easy to write complex concurrent programs without worrying about low-level details such as locking and synchronization.
 
 >> Think of goroutines as producer and consumer. These can be one producer and one consuner or multiple consumers or vice versa. Could be multiple producers and consumers all communicating/sharing via channels
 
 > https://www.golangprograms.com/goroutines.html
+
+
+### Channels thread safe?
+Yes. You should be careful if you use pointer data structure with channels.
+>The Go Programming Language Specification states:
+“A single channel may be used in send statements, receive operations, and calls to the built-in functions cap and len by any number of goroutines without further synchronization.”
+In other words, you can have multiple writers and multiple readers all using a single channel without a mutex or other lock. The channel itself manages the data and ensures the safety of concurrent access.
+
 
 ### Waitgroups
 WaitGroups are another means of allowing additional threads to complete their process before the main thread runs to completion. They work by blocking the main thread until the goroutines associated with the WaitGroup have completed. To wait for multiple goroutines to finish, we can use a wait group.
