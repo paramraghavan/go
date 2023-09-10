@@ -50,8 +50,8 @@ Because goroutines are managed by the Go runtime, they are automatically schedul
 
 ### Channels thread safe?
 Yes. You should be careful if you use pointer data structure with channels.
->The Go Programming Language Specification states:
-“A single channel may be used in send statements, receive operations, and calls to the built-in functions cap and len by any number of goroutines without further synchronization.”
+[The Go Programming Language Specification states](https://golang.org/ref/spec#Channel_types):
+>“A single channel may be used in send statements, receive operations, and calls to the built-in functions cap and len by any number of goroutines without further synchronization.”
 In other words, you can have multiple writers and multiple readers all using a single channel without a mutex or other lock. The channel itself manages the data and ensures the safety of concurrent access.
 
 
