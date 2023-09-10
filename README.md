@@ -136,6 +136,15 @@ f= i  // error! - Go doesn't support implicit conversions
 f = float32(i)  //type conversions allow explicit conversion
 '''
 
+## Arrays
+- int
+![image](https://github.com/paramraghavan/java-to-go/assets/52529498/90aaee32-f84d-4a0f-9866-47abb2f700d5)
+
+- strings
+
+
+
+
 ## Go tutorials on github
   - https://github.com/topics/go-tutorial
   - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/ **
