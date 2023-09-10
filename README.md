@@ -6,6 +6,14 @@
 - https://pkg.go.dev/std
 
 ## Is go compiled or interpreted. Is it VM based
+- Go is a compiled language.
+- This means we must run our source code files through a compiler, which reads source code and generates a binary, or executable, file that is used to run the program
+- It is syntactically similar to C, but also has memory safety, garbage collection, structural typing, and CSP-style concurrency.
+
+## Concurrency and Go
+- Supports two styles (why?):
+  – Communicating sequential processes (CSP) use communication as synchronization primitive
+  – Shared memory multithreading uses locks
 
 ## Setup
 - Intall Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
