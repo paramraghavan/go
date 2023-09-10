@@ -26,7 +26,31 @@
 Supports two styles
   - Communicating sequential processes (CSP) *use communication as synchronization primitive*
   - Shared memory multithreading uses locks
-  - goroutines communicate via channels
+#### CSP - Communicating Sequential Processes
+Concept: CSP (Communicating Sequential Processes)
+Imagine, if you will, that we take our program and we break it down into discrete execution units. We actually learned how to do that when we talked about functions a little while ago. So when viewing our program this way, we're going to have several workers or several tasks that our program is going to be able to execute. With Go, what we do is we envision each one of these workers as separate execution units that communicate with each other through something called a channel. So the first worker is going to do some work, and then it's going to pass the result of its work into a channel. The second worker will receive that work, and then it's going to do its own work upon that and send its result out to a channel as well. And then we might have another worker, and that might be the end of the execution chain. That worker takes the work from the second worker, and it finishes the job.
+
+The idea of breaking a program up into a dicrete unit of work, each unit being a worker/goroutine is called Communicating Sequential Processes, or CSP. The idea here is that our processes, workers, in this case, are communicating via these channels sequentially. Each one acts independently, but they communicate with each other with the results of their work, and then they potentially take inputs in from other workers as well. 
+
+The beautiful thing about this model is the workers can work independently, which means we can actually have each one of these workers act concurrently, as long as we have some sort of a synchronization mechanism to make sure that they are able to communicate when they need to.
+
+We could have three workers that are generating input values, and then we can have a single worker that's taking in the results of the work of those workers. As long as we have a single channel, it doesn't matter where that message comes from that's going into that channel, it's going to be passed on to that worker that's taking in the results, and it's able to work on that. This is what's called a fan‑in pattern, where we've got multiple input sources that are generating results.
+
+Since all of these can work concurrently, this allows us to have many input workers, and as a result, we can generate input values much faster. Similarly, we could flip the model around. We could have a single worker that's generating input values, and we could have multiple workers that are receiving that. Once again, as long as we have a single channel that's communicating those messages, the worker on the producer side can generate its message and pass that into the channel, and then it doesn't matter, or it doesn't care which one of the workers on the consumer side gets that message. This is ideal if our messages are slow to process, so maybe our producer can generate messages much, much faster than the workers can consume. Since all of these are working in their own concurrent tasks, then we can balance that load out. This is called a fan‑out pattern, where you've got a few input sources and many output sources.
+And the whole idea here is to balance the level of concurrency in our program, so our programs are running efficiently as possible. As long as we're using CSP, Communicating Sequential Processes, these concurrency patterns become very, very easy to implement. 
+
+#### Share Memory By Communicating
+Traditional threading models (commonly used when writing Java, C++, and Python programs, for example) require the programmer to communicate between threads using shared memory. Typically, shared data structures are protected by locks, and threads will contend over those locks to access the data. In some cases, this is made easier by the use of thread-safe data structures such as Python’s Queue.
+
+Go’s concurrency primitives - goroutines and channels - provide an elegant and distinct means of structuring concurrent software. (These concepts have an interesting history that begins with C. A. R. Hoare’s Communicating Sequential Processes.) Instead of explicitly using locks to mediate access to shared data, Go encourages the use of channels to pass references to data between goroutines. This approach ensures that only one goroutine has access to the data at a given time. The concept is summarized in the document Effective Go (a must-read for any Go programmer):
+
+*Do not communicate by sharing memory; instead, share memory by communicating.*
+>> https://go.dev/blog/codelab-share
+
+
+#### Shared memory multithreading ??????
+Although we can do everything with CSP, sometimes less convenient than shared memory
+
   > https://www.cs.princeton.edu/courses/archive/fall16/cos418/docs/P1-concurrency.pdf
   > https://www.minaandrawos.com/2015/12/06/concurrency-in-golang/
 
