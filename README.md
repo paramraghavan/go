@@ -27,6 +27,8 @@ Goroutines are very lightweight, and it's possible to create thousands or even m
 
 Because goroutines are managed by the Go runtime, they are automatically scheduled and can communicate with each other using channels. This makes it easy to write complex concurrent programs without worrying about low-level details such as locking and synchronization.
 
+>> Think of goroutines as producer and consumer. These can be one producer and one consuner or multiple consumers or vice versa. Could be multiple producers and consumers all communicating/sharing via channels
+
 > https://www.golangprograms.com/goroutines.html
 
 ### Waitgroups
