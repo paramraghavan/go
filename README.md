@@ -32,7 +32,46 @@ Because goroutines are managed by the Go runtime, they are automatically schedul
 > https://www.golangprograms.com/goroutines.html
 
 ### Waitgroups
-WaitGroups are another means of allowing additional threads to complete their process before the main thread runs to completion. They work by blocking the main thread until the goroutines associated with the WaitGroup have completed.
+WaitGroups are another means of allowing additional threads to complete their process before the main thread runs to completion. They work by blocking the main thread until the goroutines associated with the WaitGroup have completed. To wait for multiple goroutines to finish, we can use a wait group.
+Example
+```go
+// https://gobyexample.com/waitgroups
+package main
+
+import (
+    "fmt"
+    "sync"
+    "time"
+)
+
+func worker(id int) {
+    fmt.Printf("Worker %d starting\n", id)
+
+    time.Sleep(time.Second)
+    fmt.Printf("Worker %d done\n", id)
+}
+
+func main() {
+
+    var wg sync.WaitGroup
+
+    for i := 1; i <= 5; i++ {
+        wg.Add(1)
+
+        i := i
+
+        go func() {
+            defer wg.Done()
+            worker(i)
+        }()
+    }
+
+    wg.Wait()
+    fmt.Printf("All done! ")
+
+}
+```
+
 
 ## Setup
 - Install Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
