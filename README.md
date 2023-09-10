@@ -5,6 +5,8 @@
 # documentation on standard libraries
 - https://pkg.go.dev/std
 
+## Is go compiled or interpreted. Is it VM based
+
 ## Setup
 - Intall Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
   - go.dev and download go - go.dev/dl/.
@@ -74,6 +76,9 @@ func DoSomething() error {
 var myName string            //  declare variable
 var myName string = "Mike"   // declare and initialize
 var myName = "Mike"         // initialize with inferred type
+```
+- Following infers the type and creates variable of that type, note **:=", instead of "="
+```
 myName := "Mike"            // short declaration syntax
 ```
 
@@ -134,14 +139,35 @@ var i int = 32
 var f float32
 f= i  // error! - Go doesn't support implicit conversions
 f = float32(i)  //type conversions allow explicit conversion
-'''
+```
 
 ## Arrays
 - int
 ![image](https://github.com/paramraghavan/java-to-go/assets/52529498/90aaee32-f84d-4a0f-9866-47abb2f700d5)
 
 - strings
+- 
+- 
+- compare arrays, **==**
+```
+arr = [3]string{"foo", "bar", "baz"}
 
+//assigning arrays in go applies copy operation
+arr2 := arr						// arrays are copied by value
+
+fmt.PrintIn(arr2)					// /I {"foo" "bar" "baz”}
+
+arr[0] = "quux"					// {"quux" "bar" "baz"}
+fmt.Println(arr)					// {“foo' "bar' "baz”}
+fmt.Print]n(arr2)
+
+arr == arr2						// false - arrays are comparable
+```
+
+## Slice Data type
+- reference data type, similar to pointers
+- nil , means not pointing to anything
+- 
 
 
 
