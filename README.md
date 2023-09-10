@@ -53,20 +53,21 @@ func worker(id int) {
 
 func main() {
 
-    var wg sync.WaitGroup
+    var wg sync.WaitGroup	// wg counter is 0
 
     for i := 1; i <= 5; i++ {
-        wg.Add(1)
+        wg.Add(1)	// increment WG counter
 
         i := i
 
         go func() {
-            defer wg.Done()
+            defer wg.Done() // once this line runs, the wg counter is reduced
             worker(i)
         }()
     }
 
     wg.Wait()
+    // by now the wg counter is 0	
     fmt.Printf("All done! ")
 
 }
