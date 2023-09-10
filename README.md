@@ -1,5 +1,6 @@
 # go
-go through the lens of a java/python developer. [Super link for go](https://www.golangprograms.com/)
+**go** through the lens of a java/python developer. [Super link for go](https://www.golangprograms.com/).
+>work in progress
 
 
 ## Is go compiled or interpreted. Is it VM based
