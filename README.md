@@ -177,7 +177,9 @@ arr == arr2						// false - arrays are comparable
 - nil , means not pointing to anything
 - ability add data to slices, so we can increase the sixe of the datastructure, unlike the array data type where the size is finite
 - ![image](https://github.com/paramraghavan/java-to-go/assets/52529498/810ecee1-faad-4f02-8175-f354215fbf56)
-- go get golang.org/x/exp/slices // get the new slices library  dependency. exp indicates experimental library
+- ```go
+   go get golang.org/x/exp/slices // get the new slices library  dependency. exp indicates experimental library
+  ```
 - go.sum file will show the dependencies for this module
 
 
