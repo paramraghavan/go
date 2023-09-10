@@ -114,6 +114,8 @@ world
 
 ```
 
+### Select statement
+
 
 ## Setup
 - Install Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
