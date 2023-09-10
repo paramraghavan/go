@@ -140,6 +140,32 @@ world
 
 ### Select statement
 
+A select statement in Go serves a very similar purpose to the switch statement  except that the switch statement works with variables and comparison operations between those variables, select statements are optimized to work with channel operations. 
+
+- **Blocking select**
+```go
+select {
+    case channel operation:
+        statements
+    case channel operation:
+        statements
+}
+```
+
+We're going to start with the select keyword and then we're going to have a pair of matched curly braces. Notice we don't have any variable that we're going to be testing against in select statements, those are only used with switches. Then we're going to have a series of case statements, and those cases are going to consist of channel operations. So we might try and send a message into a channel or we might try and receive a message from a channel. These are often used where we might have multiple asynchronous processes, multiple Goroutines, that are doing work and the result might come back through several different channels. So for example, you might have one case that's listening for the response to a database query, but you might have another case that's listening for a message from a timer that's indicating if the operation is taking too long. So the first case would be what we would want to succeed, we want our database query to succeed, but the second case would allow us to ensure that the operation doesn't take too long and waste resources. Now in this form where we just have cases, this is what's called a blocking select, which means Go will not proceed, the select statement will stop until one of the cases can be operated on. 
+
+- **a non‑blocking select**
+```go
+select {
+    case channel operation:
+        statements
+    case channel operation:
+        statements
+    default:			//optional
+        statementsa
+}
+
+If you want to create a non‑blocking select, then you can have a default clause in the select statement. When you have a default clause, Go is going to check each case to see if those channel operations are possible to be acted upon, if none of them can be, it's not going to block, it's just going to execute the default clauses statements. Now, the other thing to keep in mind with select statements is this. In a select statement, if more than one case can be acted upon, then one case is chosen randomly. Now this is different than switches. With a switch, the first case that is valid with a switch will be executed, so Go is going to look at the cases from the top down. With a select, if multiple cases can be acted upon, Go is actually going to choose randomly between those. Now that's a very intentional decision that was made by the Go team to ensure that we don't develop a dependency or reliance or an expectation upon how our cases are going to be executed. So, if multiple cases can be executed, one will be chosen at random. 
 
 ## Setup
 - Install Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
