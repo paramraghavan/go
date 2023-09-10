@@ -182,7 +182,7 @@ arr == arr2						// false - arrays are comparable
   ```
 - go.sum file will show the dependencies for this module
 
-# Map data type
+## Map data type
 ```go
 var m map|string]int                    // declare a map
 fmt.Print]n(m)                          // mapl] (nil)
@@ -204,6 +204,139 @@ fmt.Println(v, ok)                       // 0, false
 v, ok := m[ "baz" ] 
 fmt.Println(v, ok)                       // 418, true
 ```
+
+## Structs data type
+A struct (short for "structure") is a collection of data fields with declared data types. Golang has the ability to declare and create own data types by combining one or more types, including both built-in and user-defined types. Each data field in a struct is declared with a known type, which could be a built-in type or another user-defined type.
+
+Structs are the only way to create concrete user-defined types in Golang. Struct types are declared by composing a fixed set of unique fields. Structs can improve modularity and allow to create and pass complex data structures around the system. You can also consider Structs as a template for creating a data record, like an employee record or an e-commerce product.
+
+The declaration starts with the keyword type, then a name for the new struct, and finally the keyword struct. Within the curly brackets, a series of data fields are specified with a name and a type.
+```
+type identifier struct{
+  field1 data_type
+  field2 data_type
+  field3 data_type
+}
+```
+- Creating Instances of Struct Types 
+```go
+package main
+ 
+import "fmt"
+ 
+type rectangle struct {
+	length  int
+	breadth int
+	color   string
+ 
+	geometry struct {
+		area      int
+		perimeter int
+	}
+}
+ 
+func main() {
+	var rect rectangle // dot notation
+	rect.length = 10
+	rect.breadth = 20
+	rect.color = "Green"
+ 
+	rect.geometry.area = rect.length * rect.breadth
+	rect.geometry.perimeter = 2 * (rect.length + rect.breadth)
+ 
+	fmt.Println(rect)
+	fmt.Println("Area:\t", rect.geometry.area)
+	fmt.Println("Perimeter:", rect.geometry.perimeter)
+}
+```
+- Creating a Struct Instance Using a Struct Literal
+```go
+package main
+
+import "fmt"
+
+type rectangle struct {
+	length  int
+	breadth int
+	color   string
+}
+
+func main() {
+	var rect1 = rectangle{10, 20, "Green"}
+	fmt.Println(rect1)
+
+	var rect2 = rectangle{length: 10, color: "Green"} // breadth value skipped
+	fmt.Println(rect2)
+
+	rect3 := rectangle{10, 20, "Green"}
+	fmt.Println(rect3)
+
+	rect4 := rectangle{length: 10, breadth: 20, color: "Green"}
+	fmt.Println(rect4)
+
+	rect5 := rectangle{breadth: 20, color: "Green"} // length value skipped
+	fmt.Println(rect5)
+}
+```
+
+- Struct Instantiation Using new Keyword
+An instance of a struct can also be created with the new keyword. It is then possible to assign data values to the data fields using dot notation.
+```go
+package main
+ 
+import "fmt"
+ 
+type rectangle struct {
+	length  int
+	breadth int
+	color   string
+}
+ 
+func main() {
+	rect1 := new(rectangle) // rect1 is a pointer to an instance of rectangle
+	rect1.length = 10
+	rect1.breadth = 20
+	rect1.color = "Green"
+	fmt.Println(rect1)
+ 
+	var rect2 = new(rectangle) // rect2 is an instance of rectangle
+	rect2.length = 10
+	rect2.color = "Red"
+	fmt.Println(rect2)
+}
+```
+
+- Struct Instantiation Using Pointer Address Operator
+Creates an instance of rectangle struct by using a pointer address operator is denoted by & symbol.
+
+```go
+package main
+
+import "fmt"
+
+type rectangle struct {
+	length  int
+	breadth int
+	color   string
+}
+
+func main() {
+	var rect1 = &rectangle{10, 20, "Green"} // Can't skip any value
+	fmt.Println(rect1)
+
+	var rect2 = &rectangle{}
+	rect2.length = 10
+	rect2.color = "Red"
+	fmt.Println(rect2) // breadth skipped
+
+	var rect3 = &rectangle{}
+	(*rect3).breadth = 10
+	(*rect3).color = "Blue"
+	fmt.Println(rect3) // length skipped
+}
+```
+
+> amd more here : https://www.golangprograms.com/go-language/struct.html
 
 ## Go tutorials on github
   - https://github.com/topics/go-tutorial
