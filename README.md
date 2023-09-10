@@ -37,22 +37,67 @@ Supports two styles
  ### goroutine
  A goroutine is a lightweight thread of execution in the Go programming language. It is similar to a thread in other programming languages, but it is managed by the Go runtime rather than the operating system. Goroutines allow concurrent execution of functions in a program, and they are designed to be efficient and scalable.
 
-In Go, a program starts with a single goroutine, which executes the main function. Additional goroutines can be created using the go keyword followed by a function call. This starts a new goroutine that runs concurrently with the original goroutine.
+In Go, **a program starts with a single goroutine, which executes the main function**. Additional goroutines can be created using the **go keyword followed by a function call**. This starts a new goroutine that runs concurrently with the original goroutine.
 
 Goroutines are very lightweight, and it's possible to create thousands or even millions of them in a single program without significant overhead. This makes it easy to write concurrent programs in Go that take advantage of multiple CPU cores and can perform many tasks simultaneously.
 
 Because goroutines are managed by the Go runtime, they are automatically scheduled and can **communicate with each other using channels**. This makes it easy to write complex concurrent programs without worrying about low-level details such as locking and synchronization.
 
->> Think of goroutines as producer and consumer. These can be one producer and one consuner or multiple consumers or vice versa. Could be multiple producers and consumers all communicating/sharing via channels
-
 > https://www.golangprograms.com/goroutines.html
 
+### Channels
+In Go, a channel is a built-in data structure that is used for communication and synchronization between goroutines. Channels are a fundamental feature of the language that enable safe and efficient communication and synchronization between goroutines (concurrently executing functions), meaning channels are threadsafe.  Think of channel as a conduit between producer(s) and consumer(s).
 
-### Channels thread safe?
-Yes. You should be careful if you use pointer data structure with channels.
+A channel is essentially a conduit that allows data to be passed between goroutines. It has a s**pecific type**, which determines the type of data that can be sent through the channel. Channels are created using the **built-in make function** and can be buffered or unbuffered.
+
+Unbuffered channels block the sending goroutine until there is a corresponding receiver ready to receive the value being sent. This means that data is guaranteed to be received in the order it was sent, and that synchronization is built into the channel.
+
+Buffered channels, on the other hand, can hold a limited number of values (determined by the buffer size), and will only block the sending goroutine when the buffer is full. This can allow for some additional concurrency, but requires careful consideration to avoid deadlocks and other synchronization issues.
+
+Channels are often used to coordinate the activities of different goroutines, allowing them to share data and work together without the need for explicit locking or synchronization. 
+
+For example, to create a channel of type int, you can use the following code:
+```go
+ch := make(chan int)
+```
+Here's an example of creating a buffered channel of integers with a capacity of 3:
+```go
+ch := make(chan int, 3)
+```
+
+Once a channel is created, you can send values into the channel using the <- operator, and receive values from the channel using the same operator. For example:
+```go
+ch <- 42 // send 42 into the channel
+x := <-ch // receive a value from the channel and assign it to x
+```
+Channels can also be used to signal between goroutines by sending and receiving values that don't carry any data. For example, a channel can be used to signal the termination of a goroutine:
+```go
+done := make(chan bool)
+
+// goroutine
+go func() {
+    // do some work...
+    done <- true // signal that the work is done
+}()
+
+// wait for the goroutine to finish
+<-done
+```
+
+> more here: https://www.golangprograms.com/go-language/what-are-channels-in-golang.html
+
+
 [The Go Programming Language Specification states](https://golang.org/ref/spec#Channel_types):
 >“A single channel may be used in send statements, receive operations, and calls to the built-in functions cap and len by any number of goroutines without further synchronization.”
 In other words, you can have multiple writers and multiple readers all using a single channel without a mutex or other lock. The channel itself manages the data and ensures the safety of concurrent access.
+
+### Channels thread safe?
+- Yes. You should be careful if you use pointer data structure with channels.
+-
+  
+
+
+
 
 
 ### Waitgroups
