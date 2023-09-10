@@ -1,4 +1,6 @@
-# java-go
+# go
+go from  a java/python developer
+
 ## Go for Java developers
 - https://github.com/fstab/go-programming-for-java-developers
 
@@ -9,6 +11,20 @@
 - Go is a compiled language.
 - This means we must run our source code files through a compiler, which reads source code and generates a binary, or executable, file that is used to run the program
 - It is syntactically similar to C, but also has memory safety, garbage collection, structural typing, and CSP-style concurrency.
+
+## Does Go have a runtime?
+*Go does have an extensive library, called the runtime*, that is part of every Go program. The runtime library implements garbage collection, concurrency, stack management, and other critical features of the Go language. Although it is more central to the language, Go's runtime is analogous to libc , the C library.
+
+## Goroutine vs Thread:
+|Goroutine|	Thread|
+|---------|--------|
+|Goroutines are managed by the go runtime.|	Operating system threads are managed by kernel.|
+|Goroutine are not hardware dependent.|	Threads are hardware dependent.|
+|Goroutines have easy communication medium known as channel.|	Thread does not have easy communication medium.|
+|Due to the presence of channel one goroutine can communicate with other goroutine with low latency.|	Due to lack of easy communication medium inter-threads communicate takes place with high latency.|
+|Goroutines are cheaper than threads.|The cost of threads are higher than goroutine.|
+|faster startup time than threads.| slow startup time than goroutines.|
+|growable stack| fixed stack|
 
 ## Concurrency and Go
 Supports two styles
