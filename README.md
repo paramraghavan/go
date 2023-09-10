@@ -1,8 +1,6 @@
 # go
 go through the lens of a java/python developer. [Super link for go](https://www.golangprograms.com/)
 
-## Go for Java developers
-- https://github.com/fstab/go-programming-for-java-developers
 
 ## Is go compiled or interpreted. Is it VM based
 - Go is a compiled language.
@@ -541,9 +539,11 @@ for initializer; test; post clause { ... }	// counter-based loop
 ```
 > https://www.golangprograms.com/for-range-loops.html
 
-# Documentation on standard libraries
+## Documentation on standard libraries
 - https://pkg.go.dev/std
 
+## Go for Java developers
+- https://github.com/fstab/go-programming-for-java-developers
 
 ## Go tutorials on github
   - https://github.com/topics/go-tutorial
