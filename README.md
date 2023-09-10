@@ -12,11 +12,28 @@
 
 ## Concurrency and Go
 Supports two styles
-  - Communicating sequential processes (CSP) use communication as synchronization primitive
+  - Communicating sequential processes (CSP) *use communication as synchronization primitive*
   - Shared memory multithreading uses locks
+  - goroutines communicate via channels
+  > https://www.cs.princeton.edu/courses/archive/fall16/cos418/docs/P1-concurrency.pdf
+  > https://www.minaandrawos.com/2015/12/06/concurrency-in-golang/
+
+ ### goroutine
+ A goroutine is a lightweight thread of execution in the Go programming language. It is similar to a thread in other programming languages, but it is managed by the Go runtime rather than the operating system. Goroutines allow concurrent execution of functions in a program, and they are designed to be efficient and scalable.
+
+In Go, a program starts with a single goroutine, which executes the main function. Additional goroutines can be created using the go keyword followed by a function call. This starts a new goroutine that runs concurrently with the original goroutine.
+
+Goroutines are very lightweight, and it's possible to create thousands or even millions of them in a single program without significant overhead. This makes it easy to write concurrent programs in Go that take advantage of multiple CPU cores and can perform many tasks simultaneously.
+
+Because goroutines are managed by the Go runtime, they are automatically scheduled and can communicate with each other using channels. This makes it easy to write complex concurrent programs without worrying about low-level details such as locking and synchronization.
+
+> https://www.golangprograms.com/goroutines.html
+
+### Waitgroups
+WaitGroups are another means of allowing additional threads to complete their process before the main thread runs to completion. They work by blocking the main thread until the goroutines associated with the WaitGroup have completed.
 
 ## Setup
-- Intall Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
+- Install Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
   - go.dev and download go - go.dev/dl/.
   - Install go
   - go version
@@ -338,6 +355,16 @@ func main() {
 
 > amd more here : https://www.golangprograms.com/go-language/struct.html
 
+
+## looping
+```
+for { ... }					// infinite loop
+for condition { ... }				// loop till condition
+for initializer; test; post clause { ... }	// counter-based loop
+```
+> https://www.golangprograms.com/for-range-loops.html
+
 ## Go tutorials on github
   - https://github.com/topics/go-tutorial
   - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/ **
+  - https://www.golangprograms.com/
