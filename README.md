@@ -1,5 +1,5 @@
 # go
-go from  a java/python developer
+go through the lens of a java/python developer
 
 ## Go for Java developers
 - https://github.com/fstab/go-programming-for-java-developers
