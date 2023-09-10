@@ -182,8 +182,28 @@ arr == arr2						// false - arrays are comparable
   ```
 - go.sum file will show the dependencies for this module
 
+# Map data type
+```go
+var m map|string]int                    // declare a map
+fmt.Print]n(m)                          // mapl] (nil)
+m = map[string]int{"foo": 1, "bar": 2} // map literal
+fmt.Println(m)                          // map [foo:1 bar :2]
 
+fmt.PrintIn(m[" foo"])                  // lookup value in map
+m ["bar" ] = 99                         // update value in map
 
+delete (m, "foo")                       // remove entry from map
+
+m[ "baz" ] = 418                        //add new key/value to map with
+fmt.Println(m)                          // map[bar: 99 baz: 418]
+
+fmt.PrintIn(m["foo" ])                  // 0 - foo has been removed, but queries always return results
+v, ok := m[ "foo" ]                     // v,ok this syntax verifies presents
+fmt.Println(v, ok)                       // 0, false
+
+v, ok := m[ "baz" ] 
+fmt.Println(v, ok)                       // 418, true
+```
 
 ## Go tutorials on github
   - https://github.com/topics/go-tutorial
