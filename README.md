@@ -11,9 +11,9 @@
 - It is syntactically similar to C, but also has memory safety, garbage collection, structural typing, and CSP-style concurrency.
 
 ## Concurrency and Go
-- Supports two styles (why?):
-  – Communicating sequential processes (CSP) use communication as synchronization primitive
-  – Shared memory multithreading uses locks
+Supports two styles
+  - Communicating sequential processes (CSP) use communication as synchronization primitive
+  - Shared memory multithreading uses locks
 
 ## Setup
 - Intall Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
