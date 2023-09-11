@@ -234,6 +234,7 @@ select {
 }
 
 If you want to create a non‑blocking select, then you can have a default clause in the select statement. When you have a default clause, Go is going to check each case to see if those channel operations are possible to be acted upon, if none of them can be, it's not going to block, it's just going to execute the default clauses statements. Now, the other thing to keep in mind with select statements is this. In a select statement, if more than one case can be acted upon, then one case is chosen randomly. Now this is different than switches. With a switch, the first case that is valid with a switch will be executed, so Go is going to look at the cases from the top down. With a select, if multiple cases can be acted upon, Go is actually going to choose randomly between those. Now that's a very intentional decision that was made by the Go team to ensure that we don't develop a dependency or reliance or an expectation upon how our cases are going to be executed. So, if multiple cases can be executed, one will be chosen at random. 
+```
 
 ## Setup
 - Install Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
@@ -312,7 +313,7 @@ myName := "Mike"            // short declaration syntax
 
 - Go allows multiple variables to be initialized at once!
 ```
-a, b := 10, 5 // here a and bis inferred as  in datatype, created and initialied with 10 and 5 respectively
+a, b := 10, 5 // here a and b is inferred as  in datatype, created and initialied with 10 and 5 respectively
 ```
 
 ```
@@ -333,7 +334,7 @@ c = a != b   // true - inequality
 ## Constants 
 ```
 const a = 42  // constant (implicitly typed)
-const b string = "Hello" // expliocity typed constant
+const b string = "Hello" // explicity typed constant
 
 const c = a  // one constant assigned to another
 
@@ -345,7 +346,7 @@ const (
 ```
 
 ## Pointers and Values
-Pointers are primarily used to sahre memory.
+Pointers are primarily used to share memory.
 
 ```
 a := 42
@@ -374,8 +375,7 @@ f = float32(i)  //type conversions allow explicit conversion
 ![image](https://github.com/paramraghavan/java-to-go/assets/52529498/90aaee32-f84d-4a0f-9866-47abb2f700d5)
 
 - strings
-- 
-- 
+
 - compare arrays, **==**
 ```
 arr = [3]string{"foo", "bar", "baz"}
@@ -395,7 +395,7 @@ arr == arr2						// false - arrays are comparable
 ## Slice Data type
 - Is a Reference data type, similar to pointers
 - nil , means not pointing to anything
-- ability add data to slices, so we can increase the sixe of the datastructure, unlike the array data type where the size is finite
+- ability add data to slices, so we can increase the size of the datastructure, unlike the array data type where the size is finite
 - ![image](https://github.com/paramraghavan/java-to-go/assets/52529498/810ecee1-faad-4f02-8175-f354215fbf56)
 - ```go
    go get golang.org/x/exp/slices // get the new slices library  dependency. exp indicates experimental library
