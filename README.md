@@ -12,17 +12,6 @@
 ## Does Go have a runtime?
 *Go does have an extensive library, called the runtime*, that is part of every Go program. The runtime library implements garbage collection, concurrency, stack management, and other critical features of the Go language. Although it is more central to the language, Go's runtime is analogous to libc , the C library.
 
-## Goroutine vs Thread:
-|Goroutine|	Thread|
-|---------|--------|
-|Goroutines are managed by the go runtime.|	Operating system threads are managed by kernel.|
-|Goroutine are not hardware dependent.|	Threads are hardware dependent.|
-|Goroutines have easy communication medium known as channel.|	Thread does not have easy communication medium.|
-|Due to the presence of channel one goroutine can communicate with other goroutine with low latency.|	Due to lack of easy communication medium inter-threads communicate takes place with high latency.|
-|Goroutines are cheaper than threads.|The cost of threads are higher than goroutine.|
-|faster startup time than threads.| slow startup time than goroutines.|
-|growable stack| fixed stack|
-
 ## Concurrency and Go
 Supports two styles
   - Communicating sequential processes (CSP) *use communication as synchronization primitive*
@@ -64,7 +53,20 @@ Goroutines are very lightweight, and it's possible to create thousands or even m
 
 Because goroutines are managed by the Go runtime, they are automatically scheduled and can **communicate with each other using channels**. This makes it easy to write complex concurrent programs without worrying about low-level details such as locking and synchronization.
 
+### Goroutine vs Thread:
+|Goroutine|	Thread|
+|---------|--------|
+|Goroutines are managed by the go runtime.|	Operating system threads are managed by kernel.|
+|Goroutine are not hardware dependent.|	Threads are hardware dependent.|
+|Goroutines have easy communication medium known as channel.|	Thread does not have easy communication medium.|
+|Due to the presence of channel one goroutine can communicate with other goroutine with low latency.|	Due to lack of easy communication medium inter-threads communicate takes place with high latency.|
+|Goroutines are cheaper than threads.|The cost of threads are higher than goroutine.|
+|faster startup time than threads.| slow startup time than goroutines.|
+|growable stack| fixed stack|
+
 > https://www.golangprograms.com/goroutines.html
+
+
 
 ### Channels
 In Go, a channel is a built-in data structure that is used for communication and synchronization between goroutines. Channels are a fundamental feature of the language that enable safe and efficient communication and synchronization between goroutines (concurrently executing functions), meaning channels are threadsafe.  Think of channel as a conduit between producer(s) and consumer(s).
