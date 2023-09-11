@@ -15,7 +15,7 @@
 ## Concurrency and Go
 Supports two styles
   - Communicating sequential processes (CSP) *use communication as synchronization primitive*
-  - Shared memory multithreading uses locks
+  - Shared memory multithreading uses locks ???
 #### CSP - Communicating Sequential Processes
 Concept: CSP (Communicating Sequential Processes)
 Imagine, if you will, that we take our program and we break it down into discrete execution units. We actually learned how to do that when we talked about functions a little while ago. So when viewing our program this way, we're going to have several workers or several tasks that our program is going to be able to execute. With Go, what we do is we envision each one of these workers as separate execution units that communicate with each other through something called a channel. So the first worker is going to do some work, and then it's going to pass the result of its work into a channel. The second worker will receive that work, and then it's going to do its own work upon that and send its result out to a channel as well. And then we might have another worker, and that might be the end of the execution chain. That worker takes the work from the second worker, and it finishes the job.
