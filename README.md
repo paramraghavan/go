@@ -266,11 +266,6 @@ func DoSomething() error {
 - https://earthly.dev/blog/golang-errors/
 
 
-### more on data type
-- https://www.programiz.com/golang/data-types
-- https://www.w3schools.com/go/go_data_types.php
-
-
 ## Variable Declaration
 ```
 var myName string            //  declare variable
@@ -623,6 +618,10 @@ for condition { ... }				// loop till condition
 for initializer; test; post clause { ... }	// counter-based loop
 ```
 > https://www.golangprograms.com/for-range-loops.html
+
+### more on data type
+- https://www.programiz.com/golang/data-types
+- https://www.w3schools.com/go/go_data_types.php
 
 
 ## Setup
