@@ -117,10 +117,6 @@ In other words, you can have multiple writers and multiple readers all using a s
 ### Channels thread safe?
 - Yes. You should be careful if you use pointer data structure with channels.
 -
-  
-
-
-
 
 
 ### Waitgroups
