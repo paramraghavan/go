@@ -557,6 +557,92 @@ func main() {
 > amd more here : https://www.golangprograms.com/go-language/struct.html
 
 
+## Interface
+An Interface is an abstract type. Interface describes all the methods and provides the signatures for each method. An interfaces act as a blueprint for method sets, they must be implemented before being used. 
+_Type that satisfies an interface is said to implement it._
+
+### Define Type that Satisfies an Interface
+- Defines an interface type named Employee with two methods.
+- Then it defines a type named Emp that satisfies Employee.
+- _We define all the methods on Emp that it needs to satisfy Employee_
+```go
+package main
+
+import "fmt"
+
+// Employee is an interface for printing employee details
+type Employee interface {
+	PrintName(name string)
+	PrintSalary(basic int, tax int) int
+}
+
+// Emp user-defined type
+type Emp int
+
+//
+// Emp type defines all the methods that it needs to satisfy Employee
+// see below
+//
+// PrintName method to print employee name
+func (e Emp) PrintName(name string) {
+	fmt.Println("Employee Id:\t", e)
+	fmt.Println("Employee Name:\t", name)
+}
+
+// PrintSalary method to calculate employee salary
+func (e Emp) PrintSalary(basic int, tax int) int {
+	var salary = (basic * tax) / 100
+	return basic - salary
+}
+
+func main() {
+	var e1 Employee
+	e1 = Emp(1)
+	e1.PrintName("John Doe")
+	fmt.Println("Employee Salary:", e1.PrintSalary(25000, 5))
+}
+```
+
+### Define Type that Satisfies Multiple Interfaces
+Interfaces allows any user-defined type to satisfy multiple interface types at once.
+```go
+package main
+
+import "fmt"
+
+type Polygons interface {
+	Perimeter()
+}
+
+type Object interface {
+	NumberOfSide()
+}
+
+type Pentagon int
+
+func (p Pentagon) Perimeter() {
+	fmt.Println("Perimeter of Pentagon", 5*p)
+}
+
+func (p Pentagon) NumberOfSide() {
+	fmt.Println("Pentagon has 5 sides")
+}
+
+func main() {
+	var p Polygons = Pentagon(50)
+	p.Perimeter()
+	var o Pentagon = p.(Pentagon)
+	o.NumberOfSide()
+
+	var obj Object = Pentagon(50)
+	obj.NumberOfSide()
+	var pent Pentagon = obj.(Pentagon)
+	pent.Perimeter()
+}
+```
+> and more ..  https://www.golangprograms.com/go-language/interface.html
+
+
 ## looping
 ```
 for { ... }					// infinite loop
