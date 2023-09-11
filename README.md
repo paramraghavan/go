@@ -228,34 +228,9 @@ select {
     default:			//optional
         statementsa
 }
-
-If you want to create a non‑blocking select, then you can have a default clause in the select statement. When you have a default clause, Go is going to check each case to see if those channel operations are possible to be acted upon, if none of them can be, it's not going to block, it's just going to execute the default clauses statements. Now, the other thing to keep in mind with select statements is this. In a select statement, if more than one case can be acted upon, then one case is chosen randomly. Now this is different than switches. With a switch, the first case that is valid with a switch will be executed, so Go is going to look at the cases from the top down. With a select, if multiple cases can be acted upon, Go is actually going to choose randomly between those. Now that's a very intentional decision that was made by the Go team to ensure that we don't develop a dependency or reliance or an expectation upon how our cases are going to be executed. So, if multiple cases can be executed, one will be chosen at random. 
 ```
+If you want to create a non‑blocking select,_ then you can have a default clause_ in the select statement. When you have a default clause, Go is going to check each case to see if those channel operations are possible to be acted upon, if none of them can be, it's not going to block, it's just going to execute the default clauses statements. Now, the other thing to keep in mind with select statements is this. In a select statement, if more than one case can be acted upon, then one case is chosen randomly. Now this is different than switches. With a switch, the first case that is valid with a switch will be executed, so Go is going to look at the cases from the top down. With a select, if multiple cases can be acted upon, Go is actually going to choose randomly between those. Now that's a very intentional decision that was made by the Go team to ensure that we don't develop a dependency or reliance or an expectation upon how our cases are going to be executed. So, if multiple cases can be executed, one will be chosen at random.
 
-## Setup
-- Install Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
-  - go.dev and download go - go.dev/dl/.
-  - Install go
-  - go version
-  - go
-  - 
-- Go editor
-  - Visual Studio Code + extension + libraries
-  - https://code.visualstudio.com/docs/?dv=darwinarm64
-  - Install extension Go for Visual Studio code from teh Go team at Google. In extension search for Go
-  - Menu - View -> Command Palette -> Go: Install/Update Tools -> selelct all
- 
-## Module vs Package
-- A package is a directory of .go files, and it is the basic building block of a Go program. Packages help to organize code into reusable components. 
-- On the other hand, a module is a collection of packages with built-in dependencies and versioning.  A module comes with two additional files **go.mod** and **go.sum**.
-  - go.mod gives the name of the module, as well as its dependencies and minimum versions.
-  - go.sum is a dependency lock file that is generated automatically.
-- go mod options
-  - go mod init: creates a whole new module in the current directory.
-  - go mod tidy: fixes missing modules and removes others who aren’t in use.
-  - go mod download: downloads modules to your device’s cache.
-  - and more **go mod help**
-  - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.
 
 ## Simple data types
 ```
@@ -648,6 +623,32 @@ for condition { ... }				// loop till condition
 for initializer; test; post clause { ... }	// counter-based loop
 ```
 > https://www.golangprograms.com/for-range-loops.html
+
+
+## Setup
+- Install Go toolchain. I has - build, dependencies - like third party libraries, profile code, application tracng/debugging, test, documentation
+  - go.dev and download go - go.dev/dl/.
+  - Install go
+  - go version
+  - go
+  - 
+- Go editor
+  - Visual Studio Code + extension + libraries
+  - https://code.visualstudio.com/docs/?dv=darwinarm64
+  - Install extension Go for Visual Studio code from teh Go team at Google. In extension search for Go
+  - Menu - View -> Command Palette -> Go: Install/Update Tools -> selelct all
+ 
+## Module vs Package
+- A package is a directory of .go files, and it is the basic building block of a Go program. Packages help to organize code into reusable components. 
+- On the other hand, a module is a collection of packages with built-in dependencies and versioning.  A module comes with two additional files **go.mod** and **go.sum**.
+  - go.mod gives the name of the module, as well as its dependencies and minimum versions.
+  - go.sum is a dependency lock file that is generated automatically.
+- go mod options
+  - go mod init: creates a whole new module in the current directory.
+  - go mod tidy: fixes missing modules and removes others who aren’t in use.
+  - go mod download: downloads modules to your device’s cache.
+  - and more **go mod help**
+  - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.
 
 ## Documentation on standard libraries
 - https://pkg.go.dev/std
