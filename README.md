@@ -8,6 +8,7 @@
 - This means we must run our source code files through a compiler, which reads source code and generates a binary, or executable file that is used to run the program
 - It is syntactically similar to C, but also has memory safety, garbage collection, structural typing, and CSP-style concurrency.
 - Go does not provide any VM, such as Java JVM. This language only compiles to binary like c++/c. Java Virtual Machine interprets bytecode
+- Go has a Garbage Collector like java and no free/delete lile in C/C++.
 
 ## Does Go have a runtime?
 *Go does have an extensive library, called the runtime*, that is part of every Go program. The runtime library implements garbage collection, concurrency, stack management, and other critical features of the Go language. Although it is more central to the language, Go's runtime is analogous to libc , the C library.
@@ -648,6 +649,114 @@ for initializer; test; post clause { ... }	// counter-based loop
   - go mod download: downloads modules to your device’s cache.
   - and more **go mod help**
   - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.
+
+## Memory Statistics in Go and Golang
+The Go standard library has a host of functions to peek at memory statistics runtime. We can use it to investigate what is going on behind the scene as the garbage collection works in the background. The runtime package offers some key struct types that can be used to gather memory info at runtime. One of them is called MemStats. This can be used to get feedback on the statistics of the memory allocator. Some of the key fields of MemStats type and what they refer to are as follows. Note that all of these are declared as 64-bit unsigned int:
+
+```go
+type MemStats struct {
+	Alloc 		uint64
+	TotalAlloc 	uint64
+	Mallocs 		uint64
+	Frees 		uint64
+	Sys			uint64
+	...
+}
+
+```
+* Alloc: It represents bytes of allocated heap objects. The bytes increase as more objects are created and decrease as they are deallocated.
+* TotalAlloc: It keeps track of the total number of bytes allocated in the heap objects; however, the number of bytes does not get adjusted as memory gets deallocated through the garbage collector.
+* Sys: It represents total bytes of memory obtained from the Operating System.
+* Mallocs and Frees: The malloc represents the total count of heap objects allocated and Frees represents the total number of heap objects deallocated. Therefore, the count of live objects is always Mallocs – Frees.
+There is also HeapAlloc, HeapSys, HeapIdle, HeapInuse, which represent bytes of allocated heap objects, bytes of heap memory obtained from OS, bytes of unused heap spans, and bytes of used heap span, respectively. Similarly, there are StackAlloc, StackSys, StackIdle, and StackInuse representing stack information.
+
+### Example of Garbage Collection in Go and Golang
+Let us write some simple Go code to get the memory statistics of a running program. You can extend it to a bigger program as well. The point here is to illustrate how to extract memory information. Getting a memory snapshot after a certain interval – and then comparing and investigating the result – will reveal how garbage collection works behind the scenes.
+```go
+File: memprog1.go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"runtime"
+	"time"
+)
+
+func main() {
+	var ms runtime.MemStats
+	printMemStat(ms)
+
+	//----------------------------------
+	// you can write any code here
+	//----------------------------------
+	intArr := make([]int, 900000)
+	for i := 0; i < len(intArr); i++ {
+		intArr[i] = rand.Int()
+	}
+	//------------------------------------
+	time.Sleep(5 * time.Second)
+
+	printMemStat(ms)
+
+}
+
+func printMemStat(ms runtime.MemStats) {
+	runtime.ReadMemStats(&ms)
+	fmt.Println("--------------------------------------")
+	fmt.Println("Memory Statistics Reporting time: ", time.Now())
+	fmt.Println("--------------------------------------")
+	fmt.Println("Bytes of allocated heap objects: ", ms.Alloc)
+	fmt.Println("Total bytes of Heap object: ", ms.TotalAlloc)
+	fmt.Println("Bytes of memory obtained from OS: ", ms.Sys)
+	fmt.Println("Count of heap objects: ", ms.Mallocs)
+	fmt.Println("Count of heap objects freed: ", ms.Frees)
+	fmt.Println("Count of live heap objects", ms.Mallocs-ms.Frees)
+	fmt.Println("Number of completed GC cycles: ", ms.NumGC)
+	fmt.Println("--------------------------------------")
+}
+```
+Output
+```go
+-------------------------------------------------------
+Memory Statistics Reporting time:  2022-04-14 17:43:11.048224903 +0530 IST m=+0.000264317
+-------------------------------------------------------
+Bytes of allocated heap objects:  89432
+Total bytes of Heap object:  89432
+Bytes of memory obtained from OS:  8211472
+Count of heap objects:  180
+Count of heap objects freed:  3
+Count of live heap objects 177
+NumGC is the number of completed GC cycles:  0
+-------------------------------------------------------
+-------------------------------------------------------
+Memory Statistics Reporting time:  2022-04-14 17:43:16.072656121 +0530 IST m=+5.024695581
+-------------------------------------------------------
+Bytes of allocated heap objects:  7285832
+Total bytes of Heap object:  7301992
+Bytes of memory obtained from OS:  17189648
+Count of heap objects:  227
+Count of heap objects freed:  47
+Count of live heap objects 180
+NumGC is the number of completed GC cycles:  1
+-------------------------------------------------------
+```
+
+There is a way to get even more detailed info about the Go garbage collector using the following command while running the program above:
+```go
+GODEBUG=gctrace=1 go run memprog1.go
+```
+> https://www.developer.com/languages/garbage-collection-go/
+
+### The implementation of Go’s garbage collector
+Go’s garbage collector is a non-generational concurrent, tri-color mark and sweep garbage collector. Let’s break these terms down.
+The generational hypothesis assumes that short lived objects, like temporary variables, are reclaimed most often. Thus, a generational garbage collector focuses on recently allocated objects. However, as mentioned before, compiler optimisations allow the Go compiler to allocate objects with a known lifetime to the stack. This means fewer objects will be on the heap, so fewer objects will be garbage collected. This means that a generational garbage collector is not necessary in Go. So, Go uses a non-generational garbage collector. Concurrent means that the collector runs at the same time as mutator threads. Therefore, Go uses a non-generational concurrent garbage collector. Mark and sweep is the type of garbage collector and tri-color is the algorithm used to implement this
+A mark and sweep garbage collector has two phases, unsurprisingly named mark and sweep. In the mark phase the collector traverses the heap and marks objects that are no longer needed. The follow-up sweep phase removes these objects. Mark and sweep is an indirect algorithm, as it marks live objects, and removes everything else.
+> https://medium.com/safetycultureengineering/an-overview-of-memory-management-in-go-9a72ec7c76a8
+
+
+
+
 
 ## Documentation on standard libraries
 - https://pkg.go.dev/std
