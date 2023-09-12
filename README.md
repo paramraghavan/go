@@ -647,7 +647,87 @@ for initializer; test; post clause { ... }	// counter-based loop
 ```
 > https://www.golangprograms.com/for-range-loops.html
 
-### more on data type
+## Functions
+### Naming Conventions for Golang Functions
+* A name must begin with a letter, and can have any number of additional letters and numbers.
+* A function name cannot start with a number.
+* A function name cannot contain spaces.
+* __If the functions with names that start with an uppercase letter will be exported to other packages. If the function name starts with a lowercase letter, it won't be exported to other packages, but you can call this function within the same package.__
+* If a name consists of multiple words, each word after the first should be capitalized like this: empName, EmpAddress, etc.
+* function names are case-sensitive (car, Car and CAR are three different variables).
+
+### Golang Passing Address to a Function
+Passing the address of variable to the function and the value of a variables modified using dereferencing inside body of function.  
+```go
+package main
+
+import "fmt"
+
+func update(a *int, t *string) {
+	*a = *a + 5      // defrencing pointer address
+	*t = *t + " Doe" // defrencing pointer address
+	return
+}
+
+func main() {
+	var age = 20
+	var text = "John"
+	fmt.Println("Before:", text, age)
+
+	update(&age, &text)
+
+	fmt.Println("After :", text, age)
+}
+/* Output
+Before: John 20
+After : John Doe 25
+*/
+```
+### Anonymous Functions in Golang
+An anonymous function is a function that was declared without any named identifier to refer to it. Anonymous functions can accept inputs and return outputs, just as standard functions do.
+**Assigning function to the variable.**
+```go
+package main
+
+import "fmt"
+
+var (
+	area = func(l int, b int) int {
+		return l * b
+	}
+)
+
+func main() {
+	fmt.Println(area(20, 30))
+}
+```
+
+### Closures Functions in Golang
+Closures are a special case of anonymous functions. Closures are anonymous functions which access the variables defined outside the body of the function.
+
+**Anonymous function accessing the variable defined outside body.**
+```go
+package main
+
+import "fmt"
+
+func main() {
+	l := 20
+	b := 30
+
+	func() {
+		var area int
+		area = l * b
+		fmt.Println(area)
+	}()
+}
+```
+> and more... https://www.golangprograms.com/go-language/functions.html
+
+
+
+
+## more on data type
 - https://www.programiz.com/golang/data-types
 - https://www.w3schools.com/go/go_data_types.php
 
