@@ -321,7 +321,10 @@ fmt.print(b) // prints memeory address of a
 *b = 84 // changes the value held in address of a
 fmt.print(a) // prints 84
 
-c = new(int) // build-in "new" function creates  pointer to anonymous variable
+c := new(int) // build-in "new" function creates  pointer to anonymous variable
+var d = new(int) // build-in "new" function creates  pointer to anonymous variable
+*c = 10
+fmt.Println(c)	// output 10
 ```
 
 
