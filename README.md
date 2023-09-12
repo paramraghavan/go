@@ -8,7 +8,7 @@
 - This means we must run our source code files through a compiler, which reads source code and generates a binary, or executable file that is used to run the program
 - It is syntactically similar to C, but also has memory safety, garbage collection, structural typing, and CSP-style concurrency.
 - Go does not provide any VM, such as Java JVM. This language only compiles to binary like c++/c. Java Virtual Machine interprets bytecode
-- Go has a Garbage Collector like java and no free/delete lile in C/C++.
+- Go has a Garbage Collector like java and no free/delete functions/operators like in C/C++.
 
 ## Does Go have a runtime?
 *Go does have an extensive library, called the runtime*, that is part of every Go program. The runtime library implements garbage collection, concurrency, stack management, and other critical features of the Go language. Although it is more central to the language, Go's runtime is analogous to libc , the C library.
