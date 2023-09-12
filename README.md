@@ -7,7 +7,7 @@ A quick **go** tour. [Super link for go](https://www.golangprograms.com/).
 - Go is a compiled language.
 - This means we must run our source code files through a compiler, which reads source code and generates a binary, or executable file that is used to run the program
 - It is syntactically similar to C, but also has memory safety, garbage collection, structural typing, and CSP-style concurrency.
-- Go does not provide any VM, such as Java JVM. This language only compiles to binary like c++/c. Java Virtual Machine interprets bytecode
+- Go does not provide any VM, such as Java JVM. This language only compiles to binary like c++/c.
 - Go has a Garbage Collector like java and no free/delete functions/operators like in C/C++.
 
 ## Does Go have a runtime?
