@@ -340,7 +340,17 @@ f = float32(i)  //type conversions allow explicit conversion
 
 ## Arrays
 - int
-![image](https://github.com/paramraghavan/java-to-go/assets/52529498/90aaee32-f84d-4a0f-9866-47abb2f700d5)
+```go
+var arr [3]int		// array of 3 ints
+fmt.Println(arr)	// [0 0 0]
+arr = [3]int{1, 2, 3}	// array literal
+
+fmt.Println(arr[1])	// 2
+arr[1] = 99		// update value
+fmt.Println(arr)	// [1 99 3]
+
+fmt.Println(len(arr))	// 3
+```  
 
 - strings
 
