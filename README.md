@@ -372,12 +372,12 @@ arr == arr2						// false - arrays are comparable
 
 ## Map data type
 ```go
-var m map|string]int                    // declare a map
-fmt.Print]n(m)                          // mapl] (nil)
+var m map[string]int                    // declare a map
+fmt.Println(m)                          // map (nil)
 m = map[string]int{"foo": 1, "bar": 2} // map literal
 fmt.Println(m)                          // map [foo:1 bar :2]
 
-fmt.PrintIn(m[" foo"])                  // lookup value in map
+fmt.Println(m[" foo"])                  // lookup value in map
 m ["bar" ] = 99                         // update value in map
 
 delete (m, "foo")                       // remove entry from map
@@ -385,7 +385,7 @@ delete (m, "foo")                       // remove entry from map
 m[ "baz" ] = 418                        //add new key/value to map with
 fmt.Println(m)                          // map[bar: 99 baz: 418]
 
-fmt.PrintIn(m["foo" ])                  // 0 - foo has been removed, but queries always return results
+fmt.Println(m["foo" ])                  // 0 - foo has been removed, but queries always return results
 v, ok := m[ "foo" ]                     // v,ok this syntax verifies presents
 fmt.Println(v, ok)                       // 0, false
 
