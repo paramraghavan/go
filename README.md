@@ -116,9 +116,7 @@ go func() {
 In other words, you can have multiple writers and multiple readers all using a single channel without a mutex or other lock. The channel itself manages the data and ensures the safety of concurrent access.
 
 ### Channels thread safe?
-- Yes. You should be careful if you use pointer data structure with channels.
--
-
+- Yes. 
 
 ### Waitgroups
 WaitGroups are another means of allowing additional threads to complete their process before the main thread runs to completion. They work by blocking the main thread until the goroutines associated with the WaitGroup have completed. To wait for multiple goroutines to finish, we can use a wait group.
