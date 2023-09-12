@@ -374,10 +374,26 @@ arr == arr2						// false - arrays are comparable
 - Is a Reference data type, similar to pointers
 - nil , means not pointing to anything
 - ability add data to slices, so we can increase the size of the datastructure, unlike the array data type where the size is finite
-- ![image](https://github.com/paramraghavan/java-to-go/assets/52529498/810ecee1-faad-4f02-8175-f354215fbf56)
-- ```go
+-
+```go
+var s []int				// slices of ints
+fmt.Println(s)				// (nil) 
+s = []int{1, 2, 3)			// slice litera 
+
+fmt.Println(s[1])			// 2 
+s[1] = 99				// update value 
+fmt.Println(s)				// [1 99 3]
+	
+s = append(s, 5, 10, 15)		// add elements to the slice
+fmt.Println(s)				// [1 99 3 5 10 15]
+
+s = slices.Delete(s, 1, 3) 		// remove indices 1, 2 from slice (golang.org/x/exp/slices)
+fmt.Println s)				// [1 5 10 15]
+```
+-
+```go
    go get golang.org/x/exp/slices // get the new slices library  dependency. exp indicates experimental library
-  ```
+```
 - go.sum file will show the dependencies for this module
 
 ## Map data type
