@@ -1,5 +1,5 @@
 # go
-**go** through the lens of a java/python developer. [Super link for go](https://www.golangprograms.com/).
+A quick **go** tour. [Super link for go](https://www.golangprograms.com/).
 >work in progress
 
 
