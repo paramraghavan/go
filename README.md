@@ -262,7 +262,7 @@ func DoSomething() error {
     return errors.New("something didn't work")
 }
 ```
-- https://earthly.dev/blog/golang-errors/
+| more in details... https://earthly.dev/blog/golang-errors/
 
 
 ## Variable Declaration
