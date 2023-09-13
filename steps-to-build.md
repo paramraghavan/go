@@ -1,3 +1,5 @@
+# Steps to build in go
+
 ## Create a directory
 
 ```go
@@ -32,3 +34,4 @@ go build .
 # or, just:
 simple       # if you're on Windows
 ```
+>more details... https://go.dev/blog/using-go-modules
