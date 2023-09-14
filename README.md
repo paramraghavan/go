@@ -339,6 +339,22 @@ c = a - b   // 5 - subtraction, here we are assiging new values to existing  var
 c = a * b   // 50 - multiplication
 ```
 
+## sprintf
+```go
+import "fmt"
+
+dbName := "master"
+tableName := "employee"
+str := fmt.Sprintf("%s.%s", dbName, fromTable),
+
+fmt.Println(str)
+
+/*output
+master.employee
+*/
+ 
+```
+
 ## Comparison - value and reference types
 
 ### value types
