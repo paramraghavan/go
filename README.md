@@ -921,7 +921,7 @@ A mark and sweep garbage collector has two phases, unsurprisingly named mark a
 > https://medium.com/safetycultureengineering/an-overview-of-memory-management-in-go-9a72ec7c76a8
 
 
-## Package Main
+## Package Main - how does it work
 When you build reusable pieces of code, you will develop a package as a shared library. But when you develop executable programs, you will use the package “main” for making the package as an executable program. _The package “main” tells the Go compiler that the package should compile as an executable program instead of a shared library. The main function in the package “main” will be the entry point of our executable program_. When you build shared libraries, you will not have any main package and main function in the package.
 Example
 ```go
@@ -955,7 +955,7 @@ import (
 ```
 The MongoDB driver, mgo,  provides two packages that we have imported in the above import statement.
 
-| more here... https://thenewstack.io/understanding-golang-packages/
+> more here... https://thenewstack.io/understanding-golang-packages/
 
 
 ## Documentation on standard libraries
