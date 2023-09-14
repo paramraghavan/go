@@ -70,6 +70,55 @@ Because goroutines are managed by the Go runtime, they are automatically schedul
 
 > https://www.golangprograms.com/goroutines.html
 
+## Module vs Package
+- A package is a directory of .go files, and it is the basic building block of a Go program. Packages help to organize code into reusable components. 
+- On the other hand, a module is a collection of packages with built-in dependencies and versioning.  A module comes with two additional files **go.mod** and **go.sum**.
+  - go.mod gives the name of the module, as well as its dependencies and minimum versions.
+  - go.sum is a dependency lock file that is generated automatically.
+- go mod options
+  - go mod init: creates a whole new module in the current directory.
+  - go mod tidy: fixes missing modules and removes others who aren’t in use.
+  - go mod download: downloads modules to your device’s cache.
+  - and more **go mod help**
+  - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.
+
+
+## Package Main - how does it work
+When you build reusable pieces of code, you will develop a package as a shared library. But when you develop executable programs, you will use the package “main” for making the package as an executable program. _The package “main” tells the Go compiler that the package should compile as an executable program instead of a shared library. The main function in the package “main” will be the entry point of our executable program_. When you build shared libraries, you will not have any main package and main function in the package.
+Example
+```go
+package main
+ 
+import (
+"fmt"
+)
+func main(){
+ fmt.Println("Hello, Gopher!")
+}
+```
+
+### Import Packages
+The keyword “import” is used for importing a package into other packages. In the Code Listing -1, we have imported the package “fmt” into the sample program for using the function Println. The package “fmt” comes from the Go standard library. When you import packages, the Go compiler will look on the locations specified by the environment variable GOROOT and GOPATH. Packages from the standard library are available in the GOROOT location. The packages that are created by yourself, and third-party packages which you have imported, are available in the GOPATH location.
+
+### Install Third-Party Packages
+We can download and install third-party Go packages by using “Go get” command. The Go get command will fetch the packages from the source repository and put the packages on the GOPATH location.
+
+The following command in the terminal will install “mgo”,  a third-party Go driver package for MongoDB, into your GOPATH, which can be used across the projects put on the GOPATH directory:
+```go
+go get gopkg.in/mgo.v2
+```
+
+After installing the mgo, put the import statement in your programs for reusing the code, as shown below:
+```go
+import (        
+        "gopkg.in/mgo.v2" 
+        "gopkg.in/mgo.v2/bson"       
+)
+```
+The MongoDB driver, mgo,  provides two packages that we have imported in the above import statement.
+
+> more here... https://thenewstack.io/understanding-golang-packages/
+
 
 
 ### Channels
@@ -804,18 +853,6 @@ func main() {
   - Install extension Go for Visual Studio code from teh Go team at Google. In extension search for Go
   - Menu - View -> Command Palette -> Go: Install/Update Tools -> selelct all
  
-## Module vs Package
-- A package is a directory of .go files, and it is the basic building block of a Go program. Packages help to organize code into reusable components. 
-- On the other hand, a module is a collection of packages with built-in dependencies and versioning.  A module comes with two additional files **go.mod** and **go.sum**.
-  - go.mod gives the name of the module, as well as its dependencies and minimum versions.
-  - go.sum is a dependency lock file that is generated automatically.
-- go mod options
-  - go mod init: creates a whole new module in the current directory.
-  - go mod tidy: fixes missing modules and removes others who aren’t in use.
-  - go mod download: downloads modules to your device’s cache.
-  - and more **go mod help**
-  - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.
-
 ## Memory Statistics in Go and Golang
 The Go standard library has a host of functions to peek at memory statistics runtime. We can use it to investigate what is going on behind the scene as the garbage collection works in the background. The runtime package offers some key struct types that can be used to gather memory info at runtime. One of them is called MemStats. This can be used to get feedback on the statistics of the memory allocator. Some of the key fields of MemStats type and what they refer to are as follows. Note that all of these are declared as 64-bit unsigned int:
 
@@ -919,44 +956,6 @@ Go’s garbage collector is a non-generational concurrent, tri-color mark and s
 The generational hypothesis assumes that short lived objects, like temporary variables, are reclaimed most often. Thus, a generational garbage collector focuses on recently allocated objects. However, as mentioned before, compiler optimisations allow the Go compiler to allocate objects with a known lifetime to the stack. This means fewer objects will be on the heap, so fewer objects will be garbage collected. This means that a generational garbage collector is not necessary in Go. So, Go uses a non-generational garbage collector. Concurrent means that the collector runs at the same time as mutator threads. Therefore, Go uses a non-generational concurrent garbage collector. Mark and sweep is the type of garbage collector and tri-color is the algorithm used to implement this
 A mark and sweep garbage collector has two phases, unsurprisingly named mark and sweep. In the mark phase the collector traverses the heap and marks objects that are no longer needed. The follow-up sweep phase removes these objects. Mark and sweep is an indirect algorithm, as it marks live objects, and removes everything else.
 > https://medium.com/safetycultureengineering/an-overview-of-memory-management-in-go-9a72ec7c76a8
-
-
-## Package Main - how does it work
-When you build reusable pieces of code, you will develop a package as a shared library. But when you develop executable programs, you will use the package “main” for making the package as an executable program. _The package “main” tells the Go compiler that the package should compile as an executable program instead of a shared library. The main function in the package “main” will be the entry point of our executable program_. When you build shared libraries, you will not have any main package and main function in the package.
-Example
-```go
-package main
- 
-import (
-"fmt"
-)
-func main(){
- fmt.Println("Hello, Gopher!")
-}
-```
-
-### Import Packages
-The keyword “import” is used for importing a package into other packages. In the Code Listing -1, we have imported the package “fmt” into the sample program for using the function Println. The package “fmt” comes from the Go standard library. When you import packages, the Go compiler will look on the locations specified by the environment variable GOROOT and GOPATH. Packages from the standard library are available in the GOROOT location. The packages that are created by yourself, and third-party packages which you have imported, are available in the GOPATH location.
-
-### Install Third-Party Packages
-We can download and install third-party Go packages by using “Go get” command. The Go get command will fetch the packages from the source repository and put the packages on the GOPATH location.
-
-The following command in the terminal will install “mgo”,  a third-party Go driver package for MongoDB, into your GOPATH, which can be used across the projects put on the GOPATH directory:
-```go
-go get gopkg.in/mgo.v2
-```
-
-After installing the mgo, put the import statement in your programs for reusing the code, as shown below:
-```go
-import (        
-        "gopkg.in/mgo.v2" 
-        "gopkg.in/mgo.v2/bson"       
-)
-```
-The MongoDB driver, mgo,  provides two packages that we have imported in the above import statement.
-
-> more here... https://thenewstack.io/understanding-golang-packages/
-
 
 ## Documentation on standard libraries
 - https://pkg.go.dev/std
