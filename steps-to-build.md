@@ -3,15 +3,15 @@
 ## Create a directory
 
 ```go
-mkdir simple
-cd simple
+mkdir sample
+cd sample
 ```
 
 ## Create a new module
 
 ```go
-go mod init github.com/username/simple
-# Here, the module name is: github.com/username/simple.
+go mod init github.com/username/sample
+# Here, the module name is: github.com/username/sample.
 # You're free to choose any module name.
 # It doesn't matter as long as it's unique.
 # It's better to be a URL: so it can be go-gettable.
@@ -29,9 +29,9 @@ go run .
 go build .
 
 # then:
-./simple     # if you're on xnix
+./sample     # if you're on xnix
 
 # or, just:
-simple       # if you're on Windows
+sample       # if you're on Windows
 ```
 >more details... https://go.dev/blog/using-go-modules
