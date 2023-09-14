@@ -921,7 +921,41 @@ A mark and sweep garbage collector has two phases, unsurprisingly named mark a
 > https://medium.com/safetycultureengineering/an-overview-of-memory-management-in-go-9a72ec7c76a8
 
 
+## Package Main
+When you build reusable pieces of code, you will develop a package as a shared library. But when you develop executable programs, you will use the package “main” for making the package as an executable program. _The package “main” tells the Go compiler that the package should compile as an executable program instead of a shared library. The main function in the package “main” will be the entry point of our executable program_. When you build shared libraries, you will not have any main package and main function in the package.
+Example
+```go
+package main
+ 
+import (
+"fmt"
+)
+func main(){
+ fmt.Println("Hello, Gopher!")
+}
+```
 
+### Import Packages
+The keyword “import” is used for importing a package into other packages. In the Code Listing -1, we have imported the package “fmt” into the sample program for using the function Println. The package “fmt” comes from the Go standard library. When you import packages, the Go compiler will look on the locations specified by the environment variable GOROOT and GOPATH. Packages from the standard library are available in the GOROOT location. The packages that are created by yourself, and third-party packages which you have imported, are available in the GOPATH location.
+
+### Install Third-Party Packages
+We can download and install third-party Go packages by using “Go get” command. The Go get command will fetch the packages from the source repository and put the packages on the GOPATH location.
+
+The following command in the terminal will install “mgo”,  a third-party Go driver package for MongoDB, into your GOPATH, which can be used across the projects put on the GOPATH directory:
+```go
+go get gopkg.in/mgo.v2
+```
+
+After installing the mgo, put the import statement in your programs for reusing the code, as shown below:
+```go
+import (        
+        "gopkg.in/mgo.v2" 
+        "gopkg.in/mgo.v2/bson"       
+)
+```
+The MongoDB driver, mgo,  provides two packages that we have imported in the above import statement.
+
+| more here... https://thenewstack.io/understanding-golang-packages/
 
 
 ## Documentation on standard libraries
