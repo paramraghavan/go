@@ -459,6 +459,29 @@ fmt.Println(s)				// [1 99 3 5 10 15]
 s = slices.Delete(s, 1, 3) 		// remove indices 1, 2 from slice (golang.org/x/exp/slices)
 fmt.Println s)				// [1 5 10 15]
 ```
+
+- **make** to allocate memeory, slice and append to slice.
+- If there's sufficient capacity in the underlying slice, the element is placed after the last element and the length get incremented. However, if there is not sufficient capacity, a new slice is created, all of the existing elements are copied over, the new element is added onto the end, and the new slice is returned. Notcie after appending the - _Length is 9 Capacity is 12_
+```go
+a := make([]int, 2, 5)
+a[0] = 10
+a[1] = 20
+fmt.Println("Slice A:", a)
+fmt.Printf("Length is %d Capacity is %d\n", len(a), cap(a))
+
+a = append(a, 30, 40, 50, 60, 70, 80, 90)
+fmt.Println("Slice A after appending data:", a)
+fmt.Printf("Length is %d Capacity is %d\n", len(a), cap(a))
+
+/* output
+Slice A: [10 20]
+Length is 2 Capacity is 5
+Slice A after appending data: [10 20 30 40 50 60 70 80 90]
+Length is 9 Capacity is 12
+*/
+
+```  
+
 -
 ```go
    go get golang.org/x/exp/slices // get the new slices library  dependency. exp indicates experimental library
