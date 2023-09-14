@@ -402,6 +402,23 @@ arr[1] = 99		// update value
 fmt.Println(arr)	// [1 99 3]
 
 fmt.Println(len(arr))	// 3
+
+// for loop and range over array	
+nums := []int{2, 3, 4}
+sum := 0
+for _, num := range nums {
+	sum += num
+}
+fmt.Println("sum:", sum)	// sum: 9
+
+for i, num := range nums {
+   if num == 3 {
+     fmt.Println("index:", i)	// index: 1
+   }
+}
+
+
+
 ```  
 
 - strings
