@@ -486,6 +486,32 @@ fmt.Println(v, ok)                       // 0, false
 
 v, ok := m[ "baz" ] 
 fmt.Println(v, ok)                       // 418, true
+
+
+kvs := map[string]string{"a": "apple", "b": "banana"}
+for k, v := range kvs {
+   fmt.Printf("%s -> %s\n", k, v)
+}
+/* output
+a -> apple
+b -> banana
+*/
+	
+for k := range kvs {
+  fmt.Println("key:", k)
+}
+/* output
+key: a
+key: b
+*/
+
+for i, c := range "go" { // range on strings iterates over Unicode code points.
+  fmt.Println(i, c)
+}
+/* output 
+0 103
+1 111
+*/
 ```
 
 ## Structs data type
