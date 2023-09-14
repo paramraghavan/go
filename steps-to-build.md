@@ -9,8 +9,8 @@ cd sample
 
 ## Create a new module
 
-```go
-go mod init github.com/username/sample
+```go  
+go mod init github.com/username/sample                    // or --> go mod init sample
 # Here, the module name is: github.com/username/sample.
 # You're free to choose any module name.
 # It doesn't matter as long as it's unique.
