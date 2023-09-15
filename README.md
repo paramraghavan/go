@@ -1070,6 +1070,7 @@ There is a way to get even more detailed info about the Go garbage collector usi
 GODEBUG=gctrace=1 go run memprog1.go
 ```
 > https://www.developer.com/languages/garbage-collection-go/
+> https://github.com/golang/go/blob/master/src/runtime/mgc.go
 
 ### The implementation of Go’s garbage collector
 Go’s garbage collector is a non-generational concurrent, tri-color mark and sweep garbage collector. Let’s break these terms down.
