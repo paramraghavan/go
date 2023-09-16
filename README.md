@@ -1090,3 +1090,4 @@ A mark and sweep garbage collector has two phases, unsurprisingly named mark a
   - https://www.golangprograms.com/
   - https://github.com/forhadulislam/learn-go-with-examples
   - https://www.twilio.com/blog/scaling-your-go-application-with-kubernetes
+  - https://go.googlesource.com/example
