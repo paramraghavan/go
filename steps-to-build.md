@@ -15,6 +15,9 @@ go mod init github.com/username/sample                    // or --> go mod init 
 # You're free to choose any module name.
 # It doesn't matter as long as it's unique.
 # It's better to be a URL: so it can be go-gettable.
+
+# imports missing modules and removes ones not in use.
+go mod tidy 
 ```
 ## Put all your files in that directory.
 ## Finally, run:
