@@ -6,6 +6,9 @@ A quick **go** tour.
 - [Go Sandbox](https://go.dev/play/)
 >work in progress
 
+## Web and go
+**echo** is the golang equivalent for flask. [Example here](./web) 
+> https://github.com/labstack/echo
 
 ## Is go compiled or interpreted. Is it VM based
 - Go is a compiled language.
