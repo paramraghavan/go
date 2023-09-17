@@ -7,10 +7,10 @@ go get github.com/labstack/echo/v4
 
 ```shell
 // build your web project
-mkdir web
+mkdir example1
 
 #creates a whole new module in the current directory.
-go mod init
+go mod init example1
 
 #imports missing modules and removes ones not in use.
 go mod tidy 
