@@ -7,7 +7,9 @@ A quick **go** tour.
 >work in progress
 
 ## Web and go
-**echo** is the golang equivalent for flask. [Example here](./web) 
+**echo** is the golang equivalent for flask. 
+- [Example here](./web)
+- [Echo - A Go web framework - Todo App](https://thedevelopercafe.com/articles/echo-a-go-web-framework-todo-app-a614c9942f0c)
 
 > more.. https://github.com/labstack/echo
 
