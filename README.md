@@ -1099,3 +1099,6 @@ A mark and sweep garbage collector has two phases, unsurprisingly named mark a
   - https://www.twilio.com/blog/scaling-your-go-application-with-kubernetes
   - https://go.googlesource.com/example
   - https://thedevelopercafe.com/articles/echo-a-go-web-framework-todo-app-a614c9942f0c
+
+## debugging go-application-inside-a-docker-container
+- https://blog.jetbrains.com/go/2020/05/06/debugging-a-go-application-inside-a-docker-container/
