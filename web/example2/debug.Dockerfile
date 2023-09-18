@@ -21,3 +21,6 @@ CMD ["/dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-
 # docker run --publish 8888:8888 --publish 40000:40000 --name debug-server debug-image
 # remote debug on goland with 40000 and connect to todo service with localhost:8888
 # curl -s localhost:8888
+
+# handy command to check port mapping
+# docker ps
