@@ -1102,3 +1102,4 @@ A mark and sweep garbage collector has two phases, unsurprisingly named mark a
 
 ## debugging go-application-inside-a-docker-container
 - https://blog.jetbrains.com/go/2020/05/06/debugging-a-go-application-inside-a-docker-container/
+- https://dev.to/bruc3mackenzi3/debugging-go-inside-docker-using-vscode-4f67
