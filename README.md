@@ -7,7 +7,7 @@ A quick **go** tour.
 >work in progress
 
 ## Web and go
-**echo** is the golang equivalent for flask. 
+**echo** is the - High performance, extensible, minimalist Go web framework and golang equivalent for flask.
 - [Hello World here](./web)
 - [Echo - A Go web framework - Todo App](https://thedevelopercafe.com/articles/echo-a-go-web-framework-todo-app-a614c9942f0c)
 
