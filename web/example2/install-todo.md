@@ -18,6 +18,9 @@ go build // creates binary file example2
 # OR build 2
 go run main.go todomanager.go
 
+# debug build
+ go build -gcflags "all=-N -l"
+
 ```
 
 
