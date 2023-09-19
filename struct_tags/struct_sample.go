@@ -17,6 +17,36 @@ func (p User) String() string {
 		p.Id, p.Name, p.Occupation)
 }
 
+type User1 struct {
+	FirstName string `json:"first_name"`
+	BirthYear int    `json:"birth_year"`
+	Email     string
+	Tax       float64 `json:"tax,omitempty"`
+}
+
+func marshallEx() {
+	dat, _ := json.Marshal(`User1{
+    FirstName: "Lane",
+    BirthYear: 1990,
+    Email:     "example@gmail.com",
+}`)
+	fmt.Println(string(dat))
+}
+
+func unMarshallEx() {
+	dat := []byte(`{
+    "first_name":"Lane",
+    "birth_year":1990,
+    "Email":"example@gmail.com"
+}`)
+	user := User1{}
+	err := json.Unmarshal(dat, &user)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(user)
+}
+
 func main() {
 
 	user := User{Id: 1, Name: "John Doe", Occupation: "gardener"}
@@ -28,4 +58,9 @@ func main() {
 	res2, _ := json.MarshalIndent(user2, " ", "  ")
 
 	fmt.Println(string(res2))
+
+	//
+	marshallEx()
+	//
+	unMarshallEx()
 }
