@@ -47,6 +47,27 @@ func unMarshallEx() {
 	fmt.Println(user)
 }
 
+type Test struct {
+	A string
+	B string
+	C string
+}
+
+func unMarshallEx1() {
+	var example []byte = []byte(`{"A": "1", "C": "3"}`)
+
+	out := Test{
+		A: "default a",
+		B: "default b",
+		// default for C will be "", the empty value for a string
+	}
+	err := json.Unmarshal(example, &out) // <--
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%+v", out)
+}
+
 func main() {
 
 	user := User{Id: 1, Name: "John Doe", Occupation: "gardener"}
@@ -63,4 +84,7 @@ func main() {
 	marshallEx()
 	//
 	unMarshallEx()
+	//
+	unMarshallEx1()
+
 }
