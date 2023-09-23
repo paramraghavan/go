@@ -453,11 +453,11 @@ arr = [3]string{"foo", "bar", "baz"}
 //assigning arrays in go applies copy operation
 arr2 := arr						// arrays are copied by value
 
-fmt.PrintIn(arr2)					// /I {"foo" "bar" "baz”}
+fmt.Println(arr2)					// /I {"foo" "bar" "baz”}
 
-arr[0] = "quux"					// {"quux" "bar" "baz"}
-fmt.Println(arr)					// {“foo' "bar' "baz”}
-fmt.Print]n(arr2)
+arr[0] = "quux"					
+fmt.Println(arr)				// {"quux" "bar" "baz"}				
+fmt.Println(arr2)				// {“foo' "bar' "baz”}
 
 arr == arr2						// false - arrays are comparable
 ```
