@@ -463,7 +463,7 @@ arr == arr2						// false - arrays are comparable
 ```
 
 ## Slice Data type
-- Is a Reference data type, similar to pointers
+- A Reference data type, similar to pointers
 - nil , means not pointing to anything
 - ability add data to slices, so we can increase the size of the datastructure, unlike the array data type where the size is finite
 -
