@@ -28,11 +28,11 @@ go run main.go todomanager.go
 - It is as simple as using the GET function on echo and providing it with a route path and a function.
 - **Note:** The function signature has a single parameter of type echo.Context, it is not your standard func(http.ResponseWriter, *http.Request) signature.
 
-``go
-	// 👇 new GET route
+```go
+	// new GET route
 	e.GET("/", func(c echo.Context) error {
 		todos := tm.GetAll()
-``
+```
 
 
 ## Echo Middleware
