@@ -960,7 +960,113 @@ func main() {
 > and more... https://www.golangprograms.com/go-language/functions.html
 
 
+##  Type Definitions - type alias declaration
+In Go, we can define new types by using the following form. In the syntax, type is a keyword.
+```
+// Define a solo new type.
+type NewTypeName SourceType
 
+// Define multiple new types together.
+type (
+	NewTypeName1 SourceType1
+	NewTypeName2 SourceType2
+)
+
+```
+
+### basic defination
+```go
+// The following new defined and source types are all
+// basic types. The source types are all predeclared.
+type (
+	MyInt int
+	Age   int
+	Text  string
+)
+
+// The following new defined and source types are all
+// composite types.
+type IntPtr *int
+type Book struct{author, title string; pages int}
+type Convert func(in0 int, in1 bool)(out0 int, out1 string)
+type StringArray [5]string
+type StringSlice []string
+
+func f() {
+	// The names of the three defined types
+	// can be only used within the function.
+	type PersonAge map[string]int
+	type MessageQueue chan string
+	type Reader interface{Read([]byte) int}
+}
+```
+
+### Type Alias Declarations
+```go
+// The literals below map[string]int and map[Name]Age also both denote the same type. So, similarly, aliases table and Table also denote the same type.
+type (
+	Name = string
+	Age  = int
+)
+
+type table = map[string]int
+type Table = map[Name]Age
+
+
+// The underlying types of the following ones are both int.
+type (
+	MyInt int
+	Age   MyInt
+)
+
+// The following new types have different underlying types.
+type (
+	IntSlice   []int   // underlying type is []int
+	MyIntSlice []MyInt // underlying type is []MyInt
+	AgeSlice   []Age   // underlying type is []Age
+)
+
+// The underlying types of []Age, Ages, and AgeSlice
+// are all the unnamed type []Age.
+type Ages AgeSlice
+```
+
+## Go and Generics
+```go
+package main
+
+import "sync"
+
+type Lockable[T any] struct {
+	sync.Mutex
+	Data T
+}
+
+func main() {
+	var n Lockable[uint32]
+	n.Lock()
+	n.Data++
+	n.Unlock()
+	
+	var f Lockable[float64]
+	f.Lock()
+	f.Data += 1.23
+	f.Unlock()
+	
+	var b Lockable[bool]
+	b.Lock()
+	b.Data = !b.Data
+	b.Unlock()
+	
+	var bs Lockable[[]byte]
+	bs.Lock()
+	bs.Data = append(bs.Data, "Go"...)
+	bs.Unlock()
+}
+
+```
+Lockable is a generic type. Comparing to non-generic types, there is an extra part, a type parameter list, in the declaration (specification, more precisely speaking) of a generic type. Here, the type parameter list of the Lockable generic type is [T any].
+>  - [Generics](https://go101.org/generics/101.html)
 
 ## more on data type
 - https://www.programiz.com/golang/data-types
@@ -1099,6 +1205,8 @@ A mark and sweep garbage collector has two phases, unsurprisingly named mark a
   - https://www.twilio.com/blog/scaling-your-go-application-with-kubernetes
   - https://go.googlesource.com/example
   - https://thedevelopercafe.com/articles/echo-a-go-web-framework-todo-app-a614c9942f0c
+  - https://go101.org/article/type-system-overview.html
+ 
 
 ## debugging go-application-inside-a-docker-container
 - https://blog.jetbrains.com/go/2020/05/06/debugging-a-go-application-inside-a-docker-container/
