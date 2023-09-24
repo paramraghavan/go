@@ -386,7 +386,7 @@ const (
 ```
 
 ## Pointers and Values
-Pointers are primarily used to share memory.
+Pointers are primarily used to share memory.  Pointers can have a benefit when you have structs containing lots of data. When you have these, the overhead of the garbage collector might be negated by the overhead you’d get when copying large amounts of data.
 
 ```
 a := 42
