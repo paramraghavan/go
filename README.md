@@ -737,12 +737,60 @@ func main() {
 
 > amd more here : https://www.golangprograms.com/go-language/struct.html
 
+## How to add a method to struct type in Golang?
+Structs consist of data, but apart from this, structs also tell about the behavior in the form of methods. Methods attached to structs is very much similar to the definition of normal functions, the only variation is that you need to additionally specify its type.
+
+### A normal function returning an integer and taking no parameter would look like.
+```go
+func function_name() int {
+    //code
+}
+```
+
+### Associating the above-mentioned function with the type type_name() would look like.
+```go
+type type_name struct {
+    //code
+}
+func (m type_name) function_name() int {
+    //code
+}
+```
+
+See below an Area() function is added to a struct Rect
+
+```go
+package main
+
+import "fmt"
+
+// taking a struct
+type Rect struct {
+	len, wid int
+}
+
+func (re Rect) Area() int {
+	return re.len * re.wid
+}
+
+func main() {
+	r := Rect{10, 12}
+	fmt.Println("Length and Width are:", r)
+	fmt.Println("Area of Rectangle: ", r.Area())
+}
+
+/* output
+Length and Width are: {10, 12}
+Area of Rectangle: 120
+*/
+```
+
 
 ## Interface
 An Interface is an abstract type. Interface describes all the methods and provides the signatures for each method. An interfaces act as a blueprint for method sets, they must be implemented before being used. 
 _Type that satisfies an interface is said to implement it._
 
-### Define Type that Satisfies an Interface
+### Example -  define Type that Satisfies an Interface
 - Defines an interface type named Employee with two methods.
 - Then it defines a type named Emp that satisfies Employee.
 - _We define all the methods on Emp that it needs to satisfy Employee_
