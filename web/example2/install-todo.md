@@ -69,7 +69,7 @@ func main() {
 
 
 ## Authenticated routes #
-Before we proceed adding additional routes in our application, let's talk about authentication. I am not going to discuss how to do authentication (not the focus of this article). I am going to show you how to make routes accessible only by logged in user.
+Before we proceed adding additional routes in our application, let's talk about authentication. I am going to show you how to make routes accessible only by logged in user.
 A common pattern in backend applications is to pass an auth token as a header in every request, Authorization: <auth_token>.
 You will use Echo Groups to group together routes that require authentication and add a custom middleware that will check for the presence of an auth token, for simplicity it will be a simple string equality check.
 
