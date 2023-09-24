@@ -77,6 +77,9 @@ Because goroutines are managed by the Go runtime, they are automatically schedul
 
 > https://www.golangprograms.com/goroutines.html
 
+## Go and Inhertance
+_Go doesn't have inheritance_ – instead composition, embedding and interfaces support code reuse and polymorphism.
+
 ## Module vs Package
 - A package is a directory of .go files, and it is the basic building block of a Go program. Packages help to organize code into reusable components. 
 - On the other hand, a module is a collection of packages with built-in dependencies and versioning.  A module comes with two additional files **go.mod** and **go.sum**.
