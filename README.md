@@ -757,7 +757,7 @@ func (m type_name) function_name() int {
 }
 ```
 
-See below an Area() function is added to a struct Rect
+See below an Area()  and UpdateDim function is added to a struct Rect
 
 ```go
 package main
@@ -773,15 +773,24 @@ func (re Rect) Area() int {
 	return re.len * re.wid
 }
 
+func (re *Rect) UpdateDim(l int, w int) {
+	re.len = re.len + l
+	re.wid = re.wid + w
+}
+
 func main() {
 	r := Rect{10, 12}
 	fmt.Println("Length and Width are:", r)
 	fmt.Println("Area of Rectangle: ", r.Area())
-}
 
+	r.UpdateDim(10, 20)
+	fmt.Println("Update Rectangle Dim: ", r)
+}
 /* output
-Length and Width are: {10, 12}
-Area of Rectangle: 120
+Length and Width are: {10 12}
+Area of Rectangle:  120
+
+Update Rectangle Dim:  {20 32}
 */
 ```
 
