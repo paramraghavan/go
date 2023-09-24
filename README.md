@@ -579,7 +579,8 @@ package main
  
 import "fmt"
 
-// Note: following is a nested structure 
+// Nested structures are allowed and 
+// following is a nested structure 
 type rectangle struct {
 	length  int
 	breadth int
