@@ -632,7 +632,7 @@ func main() {
 	fmt.Println(rect4)
 
 	rect5 := rectangle{breadth: 20, color: "Green"} // length value skipped
-	fmt.Println(rect5)
+	fmt.Println(rect5) 
 }
 ```
 
@@ -689,7 +689,9 @@ func main() {
 	var rect3 = &rectangle{}
 	(*rect3).breadth = 10
 	(*rect3).color = "Blue"
-	fmt.Println(rect3) // length skipped
+	// note length skipped
+	fmt.Println(rect3)  // &{0 10 Blue}
+	fmt.Println(*rect3) // {0 10 Blue}
 }
 ```
 
