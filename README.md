@@ -77,8 +77,45 @@ Because goroutines are managed by the Go runtime, they are automatically schedul
 
 > https://www.golangprograms.com/goroutines.html
 
-## Go and Inhertance
+## Go and Inheritance
 _Go doesn't have inheritance_ – instead composition, embedding and interfaces support code reuse and polymorphism.
+
+## Go and Reflection
+Reflection is the ability of a program to introspect and analyze its structure during run-time. In Go language, reflection is primarily carried out with types. The reflect package offers all the required APIs/Methods for this purpose. Reflection is often termed as a method of metaprogramming. The Go reflect package gives you features to inspect and manipulate an object at runtime
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type T struct {
+	A int
+	B string
+	C float64
+	D bool
+}
+
+func main() {
+	t := T{10, "ABCD", 15.20, true}
+	typeT := reflect.TypeOf(t)
+
+	for i := 0; i < typeT.NumField(); i++ {
+		field := typeT.Field(i)
+		fmt.Println(field.Name, field.Type)
+	}
+}
+/* output
+A int
+B string
+C float64
+D bool
+*/
+
+```
+> more.. https://www.golangprograms.com/reflection-in-golang.html
 
 ## Module vs Package
 - A package is a directory of .go files, and it is the basic building block of a Go program. Packages help to organize code into reusable components. 
