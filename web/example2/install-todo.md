@@ -40,7 +40,7 @@ go run main.go todomanager.go
 functions that run before the actual request function.
 - Here we use middleware to log all the requests to terminal.
 
-``go
+```go
 package main
 
 import (
@@ -65,31 +65,31 @@ func main() {
 
 	e.Start(":8888")
 }
-``
+```
 
 
 ## Authenticated routes #
 Before we proceed adding additional routes in our application, let's talk about authentication. I am not going to discuss how to do authentication (not the focus of this article). I am going to show you how to make routes accessible only by logged in user.
-⭐️ A common pattern in backend applications is to pass an auth token as a header in every request, Authorization: <auth_token>.
+A common pattern in backend applications is to pass an auth token as a header in every request, Authorization: <auth_token>.
 You will use Echo Groups to group together routes that require authentication and add a custom middleware that will check for the presence of an auth token, for simplicity it will be a simple string equality check.
 
 Any routes added onto authenticatedGroup will have the middleware executed before the actual route is executed.
 In this middleware, there is a check for authentication header, if the header is empty or not valid an error is returned using echo's c.Error.
 
-``go
+```go
 func main() {
 	...
     
 	authenticatedGroup := e.Group("/todos", func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
-        	// 👇 check for auth token
+        	// check for auth token
 			authorization := c.Request().Header.Get("authorization")
 			if authorization != "auth-token" {
 				c.Error(echo.ErrUnauthorized)
 				return nil
 			}
             
-            // 👇 token exists, keep moving forward
+            // token exists, keep moving forward
 			next(c)
 			return nil
 		}
@@ -97,8 +97,7 @@ func main() {
 
 	...
 }
-
-``
+```
 
 ## Complete a todo task
 Now you will add a new PATCH /todos/:id/complete endpoint that marks a todo as complete. Here you will see how to parse path parameters in echo.
