@@ -13,7 +13,10 @@ mkdir example1
 go mod init example1
 
 #imports missing modules and removes ones not in use.
-go mod tidy 
+go mod tidy
+
+#run
+go run .
 ```
 
 ```shell
