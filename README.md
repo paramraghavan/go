@@ -747,7 +747,7 @@ func function_name() int {
 }
 ```
 
-### Associating the above-mentioned function with the type type_name() would look like.
+### Associating the above-mentioned function with the type type_name() struct for example would look like.
 ```go
 type type_name struct {
     //code
