@@ -127,7 +127,7 @@ D bool
   - go mod tidy: fixes missing modules and removes others who aren’t in use.
   - mbimports -w * 	// organizes imports and code formatting
   - golangci-lint run  // performs lint check
-  - go mod tidy && mbimports -w . && golangci-lint -c ../../packages/commonlib/.golangci.yml run
+  - go mod tidy && mbimports -w . && golangci-lint -c ../../package/folder/.golangci.yml run
   - [Run Lint](https://www.makeuseof.com/linting-go-programs-golangci-lint-package/)
   - go mod download: downloads modules to your device’s cache.
   - and more **go mod help**
