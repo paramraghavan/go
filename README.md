@@ -125,8 +125,10 @@ D bool
 - go mod options
   - go mod init: creates a whole new module in the current directory.
   - go mod tidy: fixes missing modules and removes others who aren’t in use.
-  - mbimports -w * // organize imports and code formatting
-  - golangci-lint run // lint check
+  - mbimports -w * 	// organizes imports and code formatting
+  - golangci-lint run  // performs lint check
+  - go mod tidy && mbimports -w . && golangci-lint -c ../../packages/commonlib/.golangci.yml run
+  - [Run Lint](https://www.makeuseof.com/linting-go-programs-golangci-lint-package/)
   - go mod download: downloads modules to your device’s cache.
   - and more **go mod help**
   - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.
