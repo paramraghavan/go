@@ -1296,6 +1296,11 @@ The generational hypothesis assumes that short lived objects, like temporary v
 A mark and sweep garbage collector has two phases, unsurprisingly named mark and sweep. In the mark phase the collector traverses the heap and marks objects that are no longer needed. The follow-up sweep phase removes these objects. Mark and sweep is an indirect algorithm, as it marks live objects, and removes everything else.
 > https://medium.com/safetycultureengineering/an-overview-of-memory-management-in-go-9a72ec7c76a8
 
+
+## SQL 
+- https://github.com/securego/gosec#usage
+- https://www.stackhawk.com/blog/what-is-sql-injection/
+
 ## Documentation on standard libraries
 - https://pkg.go.dev/std
 
