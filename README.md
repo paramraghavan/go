@@ -312,7 +312,15 @@ world
 %T	a Go-syntax representation of the type of the value
 %%	a literal percent sign; consumes no value
 %d	base 10
+
 %q	a double-quoted string safely escaped with Go syntax
+# Example:
+fmt.Printf("str1: %s\n", "\"string\"")
+fmt.Printf("str2: %q\n", "\"string\"")
+
+# Output:
+str1: "string"
+str2: "\"string\""
 
 %f     default width, default precision
 %9f    width 9, default precision
@@ -327,7 +335,7 @@ world
 fmt.Sprintf("%6.2f", 12.0)
 
 ```
->more... https://pkg.go.dev/fmt#pkg-overview
+>more... https://gobyexample.com/string-formatting
 
 ### Select statement
 
