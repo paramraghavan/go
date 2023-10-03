@@ -304,6 +304,31 @@ world
 
 ```
 
+## fmt - The format 'verbs
+```
+%v	the value in a default format
+	when printing structs, the plus flag (%+v) adds field names
+%#v	a Go-syntax representation of the value
+%T	a Go-syntax representation of the type of the value
+%%	a literal percent sign; consumes no value
+%d	base 10
+%q	a double-quoted string safely escaped with Go syntax
+
+%f     default width, default precision
+%9f    width 9, default precision
+%.2f   default width, precision 2
+%9.2f  width 9, precision 2
+%9.f   width 9, precision 0
+
+# Booleam
+%t	the word true or false
+
+# Example
+fmt.Sprintf("%6.2f", 12.0)
+
+```
+>more... https://pkg.go.dev/fmt#pkg-overview
+
 ### Select statement
 
 A select statement in Go serves a very similar purpose to the switch statement  except that the switch statement works with variables and comparison operations between those variables, select statements are optimized to work with channel operations. 
