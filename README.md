@@ -129,10 +129,15 @@ D bool
   - golangci-lint run  // performs lint check
   - go mod tidy && mbimports -w . && golangci-lint -c ../../package/folder/.golangci.yml run
   - [Run Lint](https://www.makeuseof.com/linting-go-programs-golangci-lint-package/)
-  - go mod download: downloads modules to your device’s cache.
+  - go mod download -->  downloads modules to your device’s cache.
   - and more **go mod help**
   - https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.
-
+ 
+### Want to re-download all the dependencies 
+- Go to your GOROOT
+- sudo rm -rf ~/go/pkg/mod/
+- Go to the directory where the go.mod file exists
+- go mod download
 
 ## Package Main - how does it work
 When you build reusable pieces of code, you will develop a package as a shared library. But when you develop executable programs, you will use the package “main” for making the package as an executable program. _The package “main” tells the Go compiler that the package should compile as an executable program instead of a shared library. The main function in the package “main” will be the entry point of our executable program_. When you build shared libraries, you will not have any main package and main function in the package.
