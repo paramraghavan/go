@@ -138,6 +138,7 @@ D bool
 - sudo rm -rf ~/go/pkg/mod/
 - Go to the directory where the go.mod file exists
 - go mod download
+- go mod tidy
 
 ## Package Main - how does it work
 When you build reusable pieces of code, you will develop a package as a shared library. But when you develop executable programs, you will use the package “main” for making the package as an executable program. _The package “main” tells the Go compiler that the package should compile as an executable program instead of a shared library. The main function in the package “main” will be the entry point of our executable program_. When you build shared libraries, you will not have any main package and main function in the package.
