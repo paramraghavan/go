@@ -1355,6 +1355,12 @@ A mark and sweep garbage collector has two phases, unsurprisingly named mark a
   - https://go.googlesource.com/example
   - https://thedevelopercafe.com/articles/echo-a-go-web-framework-todo-app-a614c9942f0c
   - https://go101.org/article/type-system-overview.html
+
+## IDE
+- Visual Studio code
+- Eclipse with Go plugin
+- [LiteIDE](https://github.com/visualfc/liteide/blob/master/liteidex/deploy/welcome/en/install.md)
+- GoLand - not free
  
 
 ## debugging go-application-inside-a-docker-container
