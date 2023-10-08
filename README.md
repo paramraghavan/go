@@ -140,6 +140,31 @@ D bool
 - go mod download
 - go mod tidy
 
+### Locate new packages
+- looking for package **quote**
+- Visit pkg.go.dev and [search for a "quote" package](https://pkg.go.dev/search?q=quote).
+- Locate and click the rsc.io/quote package in search results (if you see rsc.io/quote/v4).
+- In the Documentation section, under Index, note the list of functions you can call from your code. You'll use the Go function.
+- At the top of this page, note that package quote is included in the rsc.io/quote module.
+- In your Go code, import the rsc.io/quote package and add a call to its Go function
+- ```go
+package main
+import "fmt"
+import "rsc.io/quote"
+
+func main() {
+    fmt.Println(quote.Go())
+}
+```
+- Add new module requirements and sums. Go will add the quote module as a requirement, as well as a go.sum
+```shell
+go mod tidy
+# output
+# go: finding module for package rsc.io/quote
+#go: found rsc.io/quote in rsc.io/quote v1.5.2
+```
+> https://go.dev/doc/tutorial/getting-started  
+
 ## Package Main - how does it work
 When you build reusable pieces of code, you will develop a package as a shared library. But when you develop executable programs, you will use the package “main” for making the package as an executable program. _The package “main” tells the Go compiler that the package should compile as an executable program instead of a shared library. The main function in the package “main” will be the entry point of our executable program_. When you build shared libraries, you will not have any main package and main function in the package.
 Example
