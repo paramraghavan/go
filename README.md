@@ -140,6 +140,12 @@ D bool
 - go mod download
 - go mod tidy
 
+### Goland - unresolved reference
+- although it compies and runs from cammand line
+>>Resolve:
+>> File -> Invalidate Caches / Restart.
+
+
 ### Locate new packages
 - looking for package **quote**
 - Visit pkg.go.dev and [search for a "quote" package](https://pkg.go.dev/search?q=quote).
