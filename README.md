@@ -15,6 +15,8 @@ A quick **go** tour.
 
 > more.. https://github.com/labstack/echo
 
+## Goland and OpenApi(formerly Swagger)
+>>TODO
 ## Is go compiled or interpreted. Is it VM based
 - Go is a compiled language.
 - This means we must run our source code files through a compiler, which reads source code and generates a binary, or executable file that is used to run the program
