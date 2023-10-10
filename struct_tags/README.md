@@ -46,3 +46,35 @@ go run main.go
 ```
 >more.. https://zetcode.com/golang/struct-tag/
 
+## omniempty
+There are times we don't want non-existent fields to be set to their zero values when unmarshalling them. This can be configured by using omitem.
+```go
+type Person struct {
+    Name string `json:"name"`
+    Address string `json:"address,omitempty"`
+    DateOfBirth string `json:"dob"`
+    Occupation string `json:"occupation"`
+}
+```
+Now this person:
+```go
+Person{
+    Name:        "Rob Pike",
+    Address:     "",
+    DateOfBirth: "197-01-01",
+    Occupation:  "engineer",
+}
+```
+
+would be marshaled to:
+```go
+{
+ "name": "Rob Pike",
+ "dob": "1970-01-01",
+ "occupation": "engineer"
+}
+```
+
+| more.. https://dev.to/uris77/go-notes-omitting-empty-structs-19d7
+
+
