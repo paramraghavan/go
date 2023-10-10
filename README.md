@@ -4,6 +4,8 @@ A quick **go** tour.
 - [Super link for go](https://www.golangprograms.com/).
 - [Best Golang Packages](https://www.golangprograms.com/go-programming-language-packages.html)
 - [Go Sandbox](https://go.dev/play/)
+- https://pkg.go.dev/cmd/go
+- https://go.dev/ref/mod
 >work in progress
 
 ## Web and go
@@ -516,6 +518,14 @@ var d = new(int) // build-in "new" function creates  pointer to anonymous variab
 fmt.Println(c)	// output 10
 ```
 
+## ToUpper/ToLower
+
+```go
+var hello string = "Hello World"
+
+upperCase := strings.ToUpper(hello)
+lowerCAse := strings.ToLower(hello)
+```
 
 
 ## TYPE CONVERSION
