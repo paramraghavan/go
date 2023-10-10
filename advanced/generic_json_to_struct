@@ -1,0 +1,11 @@
+func jsonStrToStruct(jsonStr string) (genericObject, error) {
+	data := flowRunObject{}
+	err := json.Unmarshal([]byte(jsonStr), &data)
+
+	if err != nil {
+		log.Println(err)
+		msg := fmt.Sprintf("Error parsing json string to struct, %s", err)
+		return data, errors.New(msg)
+	}
+	return data, nil
+}
