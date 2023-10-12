@@ -8,6 +8,7 @@ go get github.com/labstack/echo/v4
 ```shell
 // build your web project
 mkdir example1
+cd example1
 
 #creates a whole new module in the current directory.
 go mod init example1
