@@ -1,6 +1,7 @@
 ```shell
 // install echo libraries
 mkdir example2
+cd example2
 # go get github.com/labstack/echo/{version}
 go get github.com/labstack/echo/v4
 go mod init example2
