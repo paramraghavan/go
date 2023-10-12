@@ -156,7 +156,7 @@ student main.Student
 - go mod tidy
 
 ### Goland - unresolved reference
-- although it compies and runs from cammand line
+- although it compiles and runs from cammand line
 >>Resolve:
 >> File -> Invalidate Caches / Restart.
 
