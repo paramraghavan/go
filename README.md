@@ -100,10 +100,20 @@ type T struct {
 	B string
 	C float64
 	D bool
+	student Student
+}
+
+type Student struct {
+	name   string
+	branch string
+	year   int
 }
 
 func main() {
-	t := T{10, "ABCD", 15.20, true}
+	t := T{10, "ABCD", 15.20, true, Student{}}
+	t.student.year = 2023
+	t.student.branch = "BS"
+	t.student.name = " joy"
 	typeT := reflect.TypeOf(t)
 
 	for i := 0; i < typeT.NumField(); i++ {
@@ -116,6 +126,7 @@ A int
 B string
 C float64
 D bool
+student main.Student
 */
 
 ```
