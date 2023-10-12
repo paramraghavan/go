@@ -135,8 +135,8 @@ student main.Student
 ## Module vs Package
 - A package is a directory of .go files, and it is the basic building block of a Go program. Packages help to organize code into reusable components. 
 - On the other hand, a module is a collection of packages with built-in dependencies and versioning.  A module comes with two additional files **go.mod** and **go.sum**.
-  - go.mod gives the name of the module, as well as its dependencies and minimum versions.
-  - go.sum is a dependency lock file that is generated automatically.
+  - go.mod gives the name of the module, as well as its dependencies and minimum versions, like the Pipfile
+  - go.sum is a dependency lock file that is generated automatically, like Pipfile.lock in python
 - go mod options
   - go mod init: creates a whole new module in the current directory.
   - go mod tidy: fixes missing modules and removes others who aren’t in use.
