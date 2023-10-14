@@ -1281,8 +1281,8 @@ Lockable is a generic type. Comparing to non-generic types, there is an extra pa
 - Go editor
   - Visual Studio Code + extension + libraries
   - https://code.visualstudio.com/docs/?dv=darwinarm64
-  - Install extension Go for Visual Studio code from teh Go team at Google. In extension search for Go
-  - Menu - View -> Command Palette -> Go: Install/Update Tools -> selelct all
+  - Install extension Go for Visual Studio code from the **Go Team at Google**. In extension search for Go
+  - Menu - View -> Command Palette -> Go: Install/Update Tools -> select all
  
 ## Memory Statistics in Go and Golang
 The Go standard library has a host of functions to peek at memory statistics runtime. We can use it to investigate what is going on behind the scene as the garbage collection works in the background. The runtime package offers some key struct types that can be used to gather memory info at runtime. One of them is called MemStats. This can be used to get feedback on the statistics of the memory allocator. Some of the key fields of MemStats type and what they refer to are as follows. Note that all of these are declared as 64-bit unsigned int:
