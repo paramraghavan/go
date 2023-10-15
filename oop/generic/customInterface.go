@@ -8,7 +8,7 @@ type addable interface {
 	int | float64 | string
 }
 
-func genericInterface() {
+func GenericInterface() {
 	a1 := []int{1, 2, 3}
 	a2 := []float64{3.14, 6.02}
 	a3 := []string{"foo", "bar", "baz"}

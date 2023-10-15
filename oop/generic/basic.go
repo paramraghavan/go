@@ -1,10 +1,10 @@
-import generic
+package generic
 
 import (
 	"fmt"
 )
 
-func runGeneric() {
+func Generic() {
 	testScores64 := []float64{
 		87.3,
 		105,

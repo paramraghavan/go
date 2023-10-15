@@ -8,6 +8,8 @@ import (
 	es "oop/typeandfunc"
 
 	e "oop/typeandinterface"
+
+	g "oop/generic"
 )
 
 func main() {
@@ -27,4 +29,12 @@ func main() {
 	structToFunc := es.EmpSample(999)
 	structToFunc.PrintName("John Doe")
 	fmt.Println("Employee Salary:", structToFunc.PrintSalary(250000, 5))
+
+	// basic generic
+	g.Generic()
+	// extended generic
+	g.GenericExtended()
+	// custome interface generic
+	g.GenericInterface()
+
 }
