@@ -1,11 +1,13 @@
 package main
 
-import "fmt"
-
 import (
-	js "sample/jsontostruct"
-	es "sample/typeandfunc"
-	e "sample/typeandinterface"
+	"fmt"
+
+	js "oop/jsontostruct"
+
+	es "oop/typeandfunc"
+
+	e "oop/typeandinterface"
 )
 
 func main() {
