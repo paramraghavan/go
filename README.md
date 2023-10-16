@@ -1420,3 +1420,16 @@ A mark and sweep garbage collector has two phases, unsurprisingly named mark a
 ## debugging go-application-inside-a-docker-container
 - https://blog.jetbrains.com/go/2020/05/06/debugging-a-go-application-inside-a-docker-container/
 - https://dev.to/bruc3mackenzi3/debugging-go-inside-docker-using-vscode-4f67
+
+## clean restart of a docekr instance
+```
+//Stop the container(s) using the following command:
+docker-compose down
+//Delete all containers using the following command:
+docker rm -f $(docker ps -a -q)
+// Delete all volumes using the following command:
+docker volume rm $(docker volume ls -q)
+// Restart the containers using the following command:
+docker-compose up -d
+```
+> https://docs.tibco.com/pub/mash-local/4.3.0/doc/html/docker/GUID-BD850566-5B79-4915-987E-430FC38DAAE4.html
