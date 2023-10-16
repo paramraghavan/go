@@ -117,10 +117,10 @@ Anita Worcester [abc@email.com]
 
 {   0} false
 {123 main street Worcester MA 1601} true
-Found a
+Found address!
 ```
 
 ### Generics
-Interfaces are very powerful constructs in Go. However, they do have a downside, and that is, if we look at this example above, whenever we assigned a concrete type, so for example, employee or address object to printLabel  interface, it loses its identity. We no longer know for sure what concrete type we are working with. 
+Interfaces are very powerful constructs in Go. However, they do have a downside, and that is, if we look at this example above, whenever we assigned a concrete type, so for example, employee or address object to printLabel  interface, it loses its identity. We no longer know for sure what concrete type we are working with - employee or address. 
 
 In the example above we got back to the concrete type using type assertions and type switches, but those tend to be fairly heavy options for us to use. We want a family of concrete types to have some polymorphic behavior so they all work in the same way, but then after we're done with that polymorphic behavior, we'd like to get back to that concrete type. Well, interfaces don't offer us a simple way to do that, so instead, we're going to turn to another polymorphic construct that Go contains called generic, or generic programming.
