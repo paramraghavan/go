@@ -82,7 +82,7 @@ Because goroutines are managed by the Go runtime, they are automatically schedul
 > https://www.golangprograms.com/goroutines.html
 
 ## Go and Inheritance
-_Go doesn't have inheritance_ – instead composition, embedding and interfaces support code reuse and polymorphism.
+_Go doesn't have inheritance_ – instead composition, embedding and interfaces support code reuse and polymorphism.[more on method/interface/generics](./oop/readme.md)
 
 ## Go and Reflection
 Reflection is the ability of a program to introspect and analyze its structure during run-time. In Go language, reflection is primarily carried out with types. The reflect package offers all the required APIs/Methods for this purpose. Reflection is often termed as a method of metaprogramming. The Go reflect package gives you features to inspect and manipulate an object at runtime
