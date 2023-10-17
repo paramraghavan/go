@@ -840,7 +840,7 @@ func main() {
 
 ## How to add a method to struct type in Golang?
 Structs consist of data, but apart from this, structs also tell about the behavior in the form of methods. Methods attached to structs is very much similar to the definition of normal functions, the only variation is that you need to additionally specify its type.
-
+> [more](./oop/methods/methodsExample.go)
 ### A normal function returning an integer and taking no parameter would look like.
 ```go
 func function_name() int {
