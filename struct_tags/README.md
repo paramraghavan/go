@@ -12,7 +12,7 @@ A struct tag is additional meta data information inserted into struct fields. Th
 * gorm.io/gorm
 * github.com/gocarina/gocsv
 * gopkg.in/yaml.v2
-[See example](./struct_sample.go)
+* [See example](./struct_sample.go)
 
 ```shell
  go mod init struct_tags
