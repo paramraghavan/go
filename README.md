@@ -624,6 +624,9 @@ fmt.Println s)				// [1 5 10 15]
 - **make** to allocate memeory, slice and append to slice.
 - If there's sufficient capacity in the underlying slice, the element is placed after the last element and the length get incremented. However, if there is not sufficient capacity, a new slice is created, all of the existing elements are copied over, the new element is added onto the end, and the new slice is returned. Notcie after appending the - _Length is 9 Capacity is 12_
 ```go
+// Allocates an underlying array
+// of size 5 and returns a slice of length 2 and capacity 5 that is
+// backed by this underlying array.
 a := make([]int, 2, 5)
 a[0] = 10
 a[1] = 20
