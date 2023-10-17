@@ -303,7 +303,8 @@ func main() {
         i := i
 
         go func() {
-            defer wg.Done() // once this line runs, the wg counter is decremented by 1
+            defer wg.Done()	// this line is executed once the worker(i) function runs to completion
+  				// once this line executes, the wg counter is decremented by 1
             worker(i)
         }()
     }
