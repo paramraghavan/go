@@ -27,7 +27,7 @@ func GenericExtended() {
 
 /*
 *
-Note here the Key type has a lower bound of Comparable,
+Note here for the map the Key type has a lower bound of Comparable,
 the key has to implement comparable type, so it cannot be clone[K,V any],
 has to be clone[K comparable, V any]
 */
